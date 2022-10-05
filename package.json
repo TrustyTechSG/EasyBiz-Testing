@@ -1,0 +1,12 @@
+{
+  "name": "EasyBiz-Testing",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:TrustyTechSG/EasyBiz-Testing.git",
+  "author": "TrustyTech <trustytech.master@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "@playwright/test": "^1.26.1"
+  },
+  "scripts": {}
+}
