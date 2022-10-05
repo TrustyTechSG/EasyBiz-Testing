@@ -1,7 +1,7 @@
 import { test, expect } from '@playwright/test';
 
 test('test', async ({ page }) => {
-  // Go to https://console.easybizcloud.com/sign-in
+  // Go to https://console.easybizcloud.com/sign-i
   await page.goto('https://console.easybizcloud.com/sign-in');
 
   // Click [placeholder="email"]
