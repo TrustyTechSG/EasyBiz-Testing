@@ -1,5 +1,6 @@
 // @ts-check
 const { devices } = require('@playwright/test');
+require('dotenv').config();
 
 /**
  * Read environment variables from file.

@@ -8,5 +8,12 @@
   "devDependencies": {
     "@playwright/test": "^1.26.1"
   },
-  "scripts": {}
+  "scripts": {
+    "pos": "npx playwright test tests/pos/ --reporter=list",
+    "console": "npx playwright test tests/console/ --reporter=list",
+    "report": "npx playwright show-report"
+  },
+  "dependencies": {
+    "dotenv": "^16.0.3"
+  }
 }
