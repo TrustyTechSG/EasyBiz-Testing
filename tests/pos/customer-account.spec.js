@@ -16,7 +16,7 @@ test.describe('Customer account', () => {
   for (const { title, name, tel, email } of accounts) {
     test(title, async ({ page }) => {
       // Click div:nth-child(3) > div > div > .flex > .ant-space > .ant-space-item > .ant-btn
-      await page.locator('div:nth-child(3) > div > div > .flex > .ant-space > .ant-space-item > .ant-btn').click();
+      await page.locator('#new-customer').click();
 
       if (name) {
         // Click input[type="text"] >> nth=1
