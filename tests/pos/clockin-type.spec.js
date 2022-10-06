@@ -6,7 +6,7 @@ test('test', async ({ page }) => {
 
   await expect(page.locator('text=Passcode')).toHaveText("Passcode");
 
-  await page.keyboard.type('0097');
+  await page.keyboard.type('0098');
 
   await expect(page.locator('button:has-text("Ruiqi long long name")')).toBeEnabled();
 });
