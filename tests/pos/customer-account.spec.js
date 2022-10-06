@@ -7,9 +7,7 @@ test.describe('Customer account', () => {
   const accounts = [
     {
       title: 'With name',
-      name: 'Test',
-      tel: '91231232',
-      email: 'test@gmail.com'
+      name: 'Test'
     }
   ];
 
@@ -42,7 +40,7 @@ test.describe('Customer account', () => {
 
       await page.locator('button:has-text("Create account")').click();
 
-      await expect(page.locator(`text:has-text("${name}")`)).toBeVisible();
+      await expect(page.locator(`text=${name}`)).toBeVisible();
     });
   }
 });
