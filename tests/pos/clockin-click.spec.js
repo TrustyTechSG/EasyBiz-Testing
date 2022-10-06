@@ -1,9 +1,10 @@
 import { test, expect } from '@playwright/test';
 
 test('test', async ({ page }) => {
-
   // Go to https://stagingpos.easybus.app/?token=
   await page.goto(`https://stagingpos.easybus.app/?token=${process.env.MAINTOKEN}`);
+
+  await expect(page.locator('text=Passcode')).toHaveText("Passcode");
 
   // Click div[role="dialog"] button:has-text("0")
   await page.locator('div[role="dialog"] button:has-text("0")').click();
