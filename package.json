@@ -11,7 +11,9 @@
   "scripts": {
     "pos": "npx playwright test tests/pos/ --reporter=list",
     "console": "npx playwright test tests/console/ --reporter=list",
-    "report": "npx playwright show-report"
+    "report": "npx playwright show-report",
+    "genpos": "npx playwright codegen pos.easybizcloud.com",
+    "genconsole": "npx playwright codegen pos.easybizcloud.com"
   },
   "dependencies": {
     "dotenv": "^16.0.3"

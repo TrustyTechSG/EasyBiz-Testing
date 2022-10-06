@@ -18,5 +18,5 @@ test('test', async ({ page }) => {
   await page.locator('button:has-text("7")').click();
 
   // Click button:has-text("MAIN")
-  await expect(page.locator('button:has-text("MAIN")')).toHaveText("MAIN");
+  await expect(page.locator('button:has-text("Ruiqi long long name")')).toBeEnabled();
 });
