@@ -9,8 +9,8 @@
     "@playwright/test": "^1.26.1"
   },
   "scripts": {
-    "pos": "npx playwright test tests/pos/ --reporter=list",
-    "console": "npx playwright test tests/console/ --reporter=list",
+    "pos": "npx playwright test tests/pos/",
+    "console": "npx playwright test tests/console/",
     "report": "npx playwright show-report",
     "genpos": "npx playwright codegen stagingpos.easybus.app",
     "genconsole": "npx playwright codegen stagingpos.easybus.app"
