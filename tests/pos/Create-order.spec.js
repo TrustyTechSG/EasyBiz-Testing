@@ -3,16 +3,16 @@ import clockIn from './clockIn';
 import selectCustomer from './selectCustomer';
 
 const CASES = [
-  { search: '90999564', payment: 'CASH' },
-  { search: '90999564', payment: 'PAYNOW' },
-  { search: '90999564', payment: 'CARDS' },
-  { search: '90999564', payment: 'Unpaid' },
+  { search: '7193', payment: 'CASH' },
+  { search: '7193', payment: 'PAYNOW' },
+  { search: '7193', payment: 'CARDS', ref: 'test' },
+  { search: '7193', payment: 'Unpaid' },
 ];
 
 test.describe('Create order', () => {
   test.beforeEach(clockIn);
 
-  for (const { search, payment } of CASES) {
+  for (const { search, payment, ref } of CASES) {
     test(`${search} - ${payment}`, async ({ page }) => {
       await selectCustomer(page, search);
 
@@ -20,6 +20,13 @@ test.describe('Create order', () => {
       await page.locator('button:has-text("Payment")').click();
 
       await page.locator(`button:has-text("${payment}")`).click();
+
+      if (ref) {
+        // Click [placeholder="Payment reference"]
+        await page.locator('[placeholder="Payment reference"]').click();
+        // Fill [placeholder="Payment reference"]
+        await page.locator('[placeholder="Payment reference"]').fill(ref);
+      }
 
       await page.locator('button:has-text("Create order")').click();
 
