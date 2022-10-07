@@ -2,6 +2,8 @@ import { expect, test } from '@playwright/test';
 import clockIn from './clockIn';
 import selectCustomer from './selectCustomer';
 
+test.describe.configure({ mode: 'parallel' });
+
 const CASES = [
   { search: '7193', payment: 'CASH' },
   { search: '7193', payment: 'PAYNOW' },
