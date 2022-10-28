@@ -22,7 +22,16 @@ test.describe('Clock in', () => {
 
     // Click button:has-text("MAIN")
     await expect(page.locator(`button:has-text("${process.env.STAFF_NAME}")`)).toBeEnabled();
+
+    //Check clock out
+
+    await page.locator(`button:has-text("${process.env.STAFF_NAME}")`).click();
+
+    await page.locator('button:has-text("Clock out")').click();
+
+    await expect (page.locator('text=Passcode')).toBeEnabled();
   });
 
   test('by keyboard', clockIn);
+
 });

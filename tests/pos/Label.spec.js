@@ -62,7 +62,7 @@ test.describe('Label', () => {
 
   await expect (page.locator('button:has-text("Label")')).toBeEnabled();
 
-  expect (page.textContent(/test label note/));
+  expect (page.locator('strong:has-text("test label note" >> nth=1')).toBeEnabled();
 
 
 // Click .ant-space-item > .ant-space > div:nth-child(2) > .ant-typography > strong >> nth=0

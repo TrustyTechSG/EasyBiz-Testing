@@ -60,9 +60,17 @@ test.describe('Search order', () => {
 
   expect(page.locator(arrangement)).toBeEnabled;
 
-  
+  });
 
-});
+  test('Outstanding order', async ({ page }) => {
+
+  await page.locator('div:nth-child(2) > div:nth-child(2) > .ant-btn').click();
+
+  await page.locator('button:has-text("Outstanding orders")').click();
+
+  await expect(page.locator('text=Outstanding orders >> nth=1')).toBeEnabled();
+  
+  });
   
 
 });

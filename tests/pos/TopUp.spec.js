@@ -13,6 +13,16 @@ const CASES = [
 test.describe('TopUp', () => {
   test.beforeEach(clockIn);
 
+  test('Top up report', async ({ page }) => {
+     
+    await page.locator('div:nth-child(3) > div:nth-child(2) > div > .ant-btn').first().click();
+
+    await page.locator('button:has-text("Top up report")').click();
+
+    await expect(page.locator('text=Top up report >> nth=1')).toBeEnabled();
+
+  });
+
   for (const { search, payment, ref } of CASES) {
     test(`${search} - ${payment}`, async ({ page }) => {
 
@@ -40,7 +50,9 @@ test.describe('TopUp', () => {
       await page.locator('span:has-text("Top Up Receipt")').isEnabled();
   
 
-    })
-  }
+    });
+
+    
+  };
   
 });
