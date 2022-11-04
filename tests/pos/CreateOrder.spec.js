@@ -9,6 +9,8 @@ const CASES = [
   { search: '7193', payment: 'PAYNOW' },
   { search: '7193', payment: 'CARDS', ref: 'test' },
   { search: '7193', payment: 'Unpaid' },
+  { search: '7193', payment: 'Advance credit' },
+  { search: '7193', payment: 'Use points' },
 ];
 
 test.describe('Create order', () => {
@@ -18,25 +20,20 @@ test.describe('Create order', () => {
     test(`${search} - ${payment}`, async ({ page }) => {
       await selectCustomer(page, search);
 
-      // Click button:has-text("Payment")
       await page.locator('button:has-text("Payment")').click();
 
       await page.locator(`button:has-text("${payment}")`).click();
 
       if (ref) {
-        // Click [placeholder="Payment reference"]
         await page.locator('[placeholder="Payment reference"]').click();
-        // Fill [placeholder="Payment reference"]
+
         await page.locator('[placeholder="Payment reference"]').fill(ref);
       }
 
       await page.locator('button:has-text("Create order")').click();
 
-      // Click div[role="dialog"] div[role="separator"] >> text=Receipt
       await expect(page.locator('div[role="dialog"] div[role="separator"] >> text=Receipt')).toBeEnabled();
 
-      // Click [aria-label="Close"]
-      await page.locator('[aria-label="Close"]').click();
     })
   }
 });
