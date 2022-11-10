@@ -52,13 +52,11 @@ test.describe('Label', () => {
 
   await expect (page.locator('text=Update Note For All Labels')).toBeEnabled();
 
-// Click text=Update Note For All LabelsUpdateTestjjkkkAnother'sVgvgBhHhTest >> textarea
   await page.locator('text=Update Note For All LabelsUpdateTestjjkkkAnother\'sVgvgBhHhTest >> textarea').click();
-// Fill text=Update Note For All LabelsUpdateTestjjkkkAnother'sVgvgBhHhTest >> textarea
+
   await page.locator('text=Update Note For All LabelsUpdateTestjjkkkAnother\'sVgvgBhHhTest >> textarea').fill('test label note');
-// Click button:has-text("Update")
+
   await page.locator('button:has-text("Update")').click();
-// Click div:nth-child(11) > .ant-drawer > .ant-drawer-content-wrapper > .ant-drawer-content > .ant-drawer-wrapper-body > .ant-drawer-body
 
   await expect (page.locator('button:has-text("Label")')).toBeEnabled();
 

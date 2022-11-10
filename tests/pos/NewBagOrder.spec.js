@@ -19,60 +19,56 @@ test.describe('Create order', () => {
       await selectCustomer(page, search);
 
       await page.locator('div:nth-child(3) > .ant-btn').first().click();
-      // Click h4:has-text("Bag Service")
+
       await page.locator('h4:has-text("Bag Service")').click();
 
-
-      // Click text=Bag & Wallet
       await page.locator('text=Bag & Wallet').click();
 
       await page.locator('ul[role="menu"] >> text=Brand').click();
 
-      // Click button:has-text("ADIDAS")
       await page.locator('button:has-text("ADIDAS")').click();
-      // Click button:has-text("BEIGE")
+
       await page.locator('button:has-text("BEIGE")').click();
-      // Click text=Serial Number
+
       await page.locator('text=Serial Number').click();
-      // Fill text=Bag & Wallet #1RemoveItem total: SGD 0.00Line item detailsBrandColorSerial Numbe >> textarea
+
       await page.locator('text=Bag & Wallet #1RemoveItem total: SGD 0.00Line item detailsBrandColorSerial Numbe >> textarea').fill('test12345678');
-      // Click text=Material
+
       await page.locator('text=Material').click();
-      // Click button:has-text("CANVAS")
+
       await page.locator('button:has-text("CANVAS")').click();
-      // Click text=Size
+
       await page.locator('text=Size').click();
-      // Click button:has-text("SMALL")
+
       await page.locator('button:has-text("SMALL")').click();
-      // Click button:has-text("WEAR & TEAR")
+
       await page.locator('button:has-text("WEAR & TEAR")').click();
-      // Click button:has-text("OIL/ FOOD STAIN")
+
       await page.locator('button:has-text("OIL/ FOOD STAIN")').click();
-      // Click button:has-text("COLOUR STAIN")
+
       await page.locator('button:has-text("COLOUR STAIN")').click();
-      // Click text=Service Types
+
       await page.locator('text=Service Types').click();
-      // Click text=HP Coating (Large Book Tote)[HP]SGD 180.00 ~ HP Coating[HP 2]SGD 75.00 ~ SGD 200 >> button >> nth=0
+
       await page.locator('text=HP Coating (Large Book Tote)[HP]SGD 180.00 ~ HP Coating[HP 2]SGD 75.00 ~ SGD 200 >> button').first().click();
-      // Click button:has-text("SGD 180.00")
+
       await page.locator('button:has-text("SGD 180.00")').click();
-      // Click div[role="dialog"] button:has-text("Discount")
+
       await page.locator('div[role="dialog"] button:has-text("Discount")').click();
-      // Click button:has-text("1") >> nth=2
+
       await page.locator('button:has-text("1")').nth(2).click();
-      // Click button:has-text("0") >> nth=2
+
       await page.locator('button:has-text("0")').nth(2).click();
-      // Click button:has-text("Update")
+
       await page.locator('button:has-text("Update")').click();
-      // Click button:has-text("OK")
+
       await page.locator('button:has-text("OK")').click();
-      // Click button:has-text("SGD 170.00")
+
       await expect(page.locator('button:has-text("SGD 170.00")')).toBeEnabled();
-      // Click ul[role="menu"] >> text=Collection
+
       await page.locator('ul[role="menu"] >> text=Collection').click();
-      // Click text=08
+
       await page.locator('tbody >> text=17').click();
-      // Check text=Need further confirmationSGD 170.00 >> input[type="checkbox"]
 
       await page.locator('button:has-text("Complete & Close")').click();
 

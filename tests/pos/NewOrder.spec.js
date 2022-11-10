@@ -58,6 +58,23 @@ test.describe('Create order', () => {
 
       await page.locator('button:has-text("Payment")').click();
 
+      //Sign on order
+
+      await page.locator('text=Total payableSGD 50.00 >> span').nth(2).click();
+      // Click text=Signature
+      await expect(page.locator('text=Signature')).toBeEnabled();
+      // Click [data-testid="canvas-element"]
+      await page.locator('[data-testid="canvas-element"]').click({
+        position: {
+          x: 243,
+          y: 111
+        }
+      });
+      // Click button:has-text("OK")
+      await page.locator('button:has-text("OK")').click();
+
+      //continue with payment
+
       await page.locator(`button:has-text("${payment}")`).click();
 
       if (ref) {
@@ -77,19 +94,23 @@ test.describe('Create order', () => {
 
       await page.locator('button:has-text("Sales return")').click();
 
-      await page.locator('button:has-text("By enter return amount")').click(1);
+      await page.locator('text=By enter return amount').click();
 
-      await page.locator('button:has-text("5") >> nth=1').click();
-
-      await page.locator('button:has-text("OK")').click();
-
-      await page.locator('text=#02088 Sales returnSales return amount: SGD 5.00CancelSubmit sales return >> button').nth(1).click();
-
-      await page.locator('button:has-text("5") >> nth=1').click();
+      await page.locator('button:has-text("8")').click();
 
       await page.locator('button:has-text("OK")').click();
 
-      await page.locator('text=#02067 Sales returnSales return amount: SGD 1.00CancelSubmit sales return >> textarea').fill('test sales return by amount');
+      await page.locator('text=Sales returnSales return amount: SGD 8.00CancelSubmit sales return >> button').nth(1).click();
+
+      ///await page.locator('button:has-text("1")').nth(3).click();
+
+      await page.locator('button:has-text("0") >> nth=2').click();
+
+      await page.locator('button:has-text("OK")').click();
+
+      await page.locator('text=Sales returnSales return amount: SGD 0.00CancelSubmit sales return >> textarea').fill('test sales return by amount');
+
+      //await page.locator('textarea').nth(3).fill('test sales return by amount');
 
       await page.locator('button:has-text("Submit sales return")').click();
 
@@ -128,13 +149,13 @@ test.describe('Create order', () => {
       
       await page.keyboard.type("cancel order note");
 
-      await page.locator('text=Cancel order').nth(2).press('Enter');
+      await page.locator('text=Cancel order >> nth=3').click();
 
 
       //xpect(page.keyboard.press('Enter'));
-      await expect(page.locator('text=Progess')).toBeEnabled();
+      await page.locator('button:has-text("Progress")').click();
 
-      expect(page.locator(`text=Cancel ${STAFF_NAME}`));
+      expect(page.locator(`text=Cancel ${STAFF_NAME}`)).toBeEnabled();
 
      // });
     });
