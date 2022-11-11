@@ -13,7 +13,7 @@
     "console": "npx playwright test tests/console/",
     "report": "npx playwright show-report",
     "genpos": "npx playwright codegen stagingpos.easybus.app",
-    "genconsole": "npx playwright codegen stagingpos.easybus.app"
+    "genconsole": "npx playwright codegen stagingconsole.easybus.app"
   },
   "dependencies": {
     "dotenv": "^16.0.3"
