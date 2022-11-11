@@ -1,6 +1,8 @@
 import { test, expect } from '@playwright/test';
+import SignIn from './SignIn';
 
-test('test', async ({ page }) => {
+test.describe('Clock in', () => {
+  test('test', async ({ page }) => {
   // Go to https://console.easybizcloud.com/sign-i
   await page.goto('https://console.easybizcloud.com/sign-in');
 
@@ -22,5 +24,7 @@ test('test', async ({ page }) => {
 
   // Click button:has-text("OK")
   await page.locator('button:has-text("OK")').click();
+  });
 
+  test('easylogin', SignIn);
 });
