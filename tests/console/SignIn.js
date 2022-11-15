@@ -16,9 +16,14 @@ export default async ({ page }) => {
     await page.locator('[placeholder="Password"]').fill(`${process.env.PASSWORD}`);
     // Click text=EmailPasswordForgot your password?Sign in >> button
     await page.locator('text=EmailPasswordForgot your password?Sign in >> button').click();
-    
+
     await expect(page).toHaveURL('https://stagingconsole.easybus.app/dashboard');
     // Click text=Welcome Juanhong
     //await page.locator('text=Welcome Juanhong').click();
+
+
+    if (page.locator('text=Admin Console'));
+    await page.locator('[aria-label="Close"]').click();
+
 }
 

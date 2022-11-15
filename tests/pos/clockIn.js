@@ -16,7 +16,7 @@ export default async ({ page }) => {
   await page.locator('div[role="dialog"] button:has-text("4")').click();
 
   // Click button:has-text("7")
-  await page.locator('button:has-text("5")').click();
+  await page.locator('div[role="dialog"] button:has-text("5")').click();
 
 
   //await page.keyboard.type(process.env.STAFF_PASSCODE);
