@@ -23,7 +23,8 @@ export default async ({ page }) => {
 
 
     if (page.locator('text=Admin Console'));
-    await page.locator('[aria-label="Close"]').click();
+
+    await page.locator('button:has-text("OK")').click();
 
 }
 

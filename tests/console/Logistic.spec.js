@@ -3,6 +3,8 @@ import SignIn from './SignIn';
 
 test.beforeEach(SignIn);
 
+test.describe('Logistic test' , () => {
+
 test('Logistic', async ({ page }) => {
 
   await page.locator('li[role="menuitem"]:has-text("Logistic")').click();
@@ -36,6 +38,38 @@ test('Logistic', async ({ page }) => {
   await expect(page).toHaveURL('https://stagingconsole.easybus.app/dashboard/logistic/trips');
   expect(page.locator('text=Schedule time')).toBeEnabled();
 
-  
+
+});
+
+test('Dashboard', async ({ page }) => {
+
+  await page.locator('li[role="menuitem"]:has-text("Logistic")').click();
+  await expect(page).toHaveURL('https://stagingconsole.easybus.app/dashboard/logistic/dashboard');
+
+  await page.locator('[aria-label="car"] path').click();
+  await expect(page).toHaveURL('https://stagingconsole.easybus.app/dashboard/logistic/dashboard');
+
+  await page.locator('[placeholder="Start date"]').click();
+
+  await page.locator('td:nth-child(3) > .ant-picker-cell-inner').first().click();
+
+  await page.locator('tr:nth-child(5) > td:nth-child(4) > .ant-picker-cell-inner').first().click();
+
+  await page.locator('text=24/11').click();
+
+  await page.locator('text=#00458').click();
+
+  await expect (page.locator('text=#00458 (App V2)')).toBeEnabled();
+
+  expect (page.locator('div[role="separator"] >> text=Logistic')).toBeEnabled();
+
+  expect (page.locator('text=24/11/2022 (Thursday)')).toBeVisible();
+
+  await page.locator('text=#00458 (App V2)Tann >> [aria-label="Close"]').click();
+
+  expect (page.locator('text=#00458 (App V2)')).toBeDisabled();
+
+
+});
 
 });
