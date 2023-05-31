@@ -6,7 +6,8 @@
   "author": "TrustyTech <trustytech.master@gmail.com>",
   "license": "MIT",
   "devDependencies": {
-    "@playwright/test": "^1.26.1"
+    "@playwright/test": "^1.26.1",
+    "@testing-library/react": "^14.0.0"
   },
   "scripts": {
     "pos": "npx playwright test tests/pos/",
