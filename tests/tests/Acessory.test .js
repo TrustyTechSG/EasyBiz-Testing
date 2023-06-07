@@ -7,7 +7,7 @@ test('test', async ({ page }) => {
   await page.goto(response.url);
   //await page.getByText('Windbreaker').click();
   await page.locator('div').filter({ hasText: /^Windbreaker$/ }).nth(2).click();
-    await page.getByRole('button', { name: 'plus' }).click();
+  await page.getByRole('button', { name: 'plus' }).click();
   await page.getByRole('button', { name: 'Line item details' }).click();
   await page.getByRole('button', { name: 'Accessory' }).click();
   await page.getByRole('listitem').filter({ hasText: 'Own Hanger0 pcs' }).getByRole('button', { name: 'plus' }).click();
