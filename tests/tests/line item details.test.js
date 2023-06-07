@@ -4,11 +4,11 @@ const response = await (await fetch(`https://us-central1-easybus-clean-cloud.clo
 await page.goto(response.url);
 await page.getByText('Windbreaker').click();
 await page.getByRole('heading', { name: 'Laundry' }).getByRole('button', { name: '0 pcs' }).click();
-await page.getByRole('button', { name: '1' }).click();
+await page.getByRole('button', { name: '1',exact: true }).click();
 await page.getByRole('button', { name: 'Add' }).click();
 await page.getByRole('button', { name: 'Line item details' }).click();
 await page.getByRole('button', { name: 'Accessory' }).click();
-await page.getByRole('listitem').filter({ hasText: 'Own Hanger0 pcs' }).getByRole('button', { name: 'plus' }).click();
+await page.getByRole('listitem').filter({ hasText: 'Own Hanger0 pcs' }).getByRole('button', { name: 'plus' }).click()
 const locator = page.getByText('Accessory: Own Hanger ');
 await expect(locator).toBeVisible();
 });
