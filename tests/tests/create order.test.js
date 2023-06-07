@@ -10,4 +10,5 @@ test('test', async ({ page }) => {
   await page.getByRole('button', { name: 'Payment' }).click();
   await page.getByRole('button', { name: 'cash' }).click();
   await page.getByRole('button', { name: 'Create order' }).click();
+  await expect(page.getByRole('heading', { name: '(PAID)' })).toBeAttached();
   });
