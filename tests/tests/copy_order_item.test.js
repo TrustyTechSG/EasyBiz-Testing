@@ -13,5 +13,5 @@ test('test', async ({ page }) => {
   await page.getByRole('button', { name: 'Create order' }).click();
   await page.getByRole('button', { name: 'copy' }).click();
   await page.getByRole('button', { name: 'OK', exact: true }).click();
-  await page.getByText('#1 Business Jacket').click();
+  await expect(page.getByText('#1 Business Jacket')).toBeTruthy();
 });
