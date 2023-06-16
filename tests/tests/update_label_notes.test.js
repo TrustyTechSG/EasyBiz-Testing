@@ -15,5 +15,6 @@ await page.getByRole('img', { name: 'tag' }).locator('svg').click();
 await page.getByRole('button', { name: 'edit Label Note' }).click();
 await page.getByPlaceholder('Note', { exact: true }).click();
 await page.getByPlaceholder('Note', { exact: true }).fill('label note');
+await page.getByRole('button', { name: 'Update' }).click();
 await expect(page.getByText('Note updated')).toBeTruthy();
 });
