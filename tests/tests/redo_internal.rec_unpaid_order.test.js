@@ -1,5 +1,5 @@
 import { test, expect } from '@playwright/test';
-//redo unpaid order
+//unpaid redo order internal receipt
 test('test', async ({ page }) => {
   const response = await (await fetch(`https://us-central1-easybus-clean-cloud.cloudfunctions.net/testing?realm=JewIJxIl06qRVrOnhBL9&code=store1&method=pos_sign_in`)).json();
   await page.goto(response.url);
@@ -16,5 +16,7 @@ test('test', async ({ page }) => {
  await page.getByRole('button', { name: 'Create redo order' }).click();
  await page.getByRole('button', { name: 'border #1' }).click();
  await page.getByRole('button', { name: 'Create redo order' }).click();
- await expect(page.getByText('Redo order created')).toBeTruthy();
-})
+ await page.getByRole('tab', { name: 'Internal receipt' }).click();
+ await expect(page.getByRole('heading', { name: '(PAID)' })).toBeVisible();
+
+});
