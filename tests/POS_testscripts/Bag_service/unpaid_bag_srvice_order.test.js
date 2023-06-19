@@ -18,7 +18,7 @@ test('test', async ({ page }) => {
   await page.getByPlaceholder('Search customer, order').click();
   await page.getByText('[1]').click();
   await page.getByRole('button', { name: 'Payment' }).click();
-  await page.getByRole('button', { name: 'Cash' }).click();
+  await page.getByRole('button', { name: 'unpaid' }).click();
   await page.getByRole('button', { name: 'Create order' }).click();
   const locator = page.getByText('Bag x 1 ₹ 30.00');
   await expect(locator).toBeTruthy();  
