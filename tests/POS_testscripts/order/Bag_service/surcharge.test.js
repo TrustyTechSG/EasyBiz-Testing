@@ -18,7 +18,7 @@ test('test', async ({ page }) => {
   await page.getByPlaceholder('Search customer, order').click();
   await page.getByText('[1] test ').click();
   await page.getByRole('button', { name: 'plus Surcharge' }).click();
-  await page.getByRole('button', { name: 'plus', exact: true }).click();
+  await page.getByRole('listitem').filter({ hasText: 'sur_charge' }).getByRole('button', { name: 'plus' }).click();
   await page.getByRole('button', { name: 'Payment' }).click();
   await page.getByRole('button', { name: 'cash' }).click();
   await page.getByRole('button', { name: 'Create order' }).click();

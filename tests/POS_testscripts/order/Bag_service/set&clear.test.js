@@ -14,6 +14,6 @@ await page.getByRole('button', { name: 'Next right' }).click();
 await page.getByRole('listitem').filter({ hasText: 'Deep Cleaning[DC]' }).getByRole('button', { name: 'plus' }).click();
 await page.getByRole('button', { name: 'Next right' }).click();
 await page.getByText('15', { exact: true }).click();
-await page.getByRole('button', { name: 'delete Clear' }).click();
+await page.locator('div').filter({ hasText: /^Clear$/ }).getByRole('button', { name: 'delete Clear' }).click();
 await expect(page.getByText('Not set (Click on calendar to set date)')).toHaveText
 });
