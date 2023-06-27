@@ -17,12 +17,14 @@ test('test', async ({ page }) => {
   await page.getByRole('button', { name: 'Complete & Close' }).click();
   await page.getByPlaceholder('Search customer, order').click();
   await page.getByText('[1] test ').click();
-  await page.getByRole('button', { name: 'credit-card Payment' }).click();
-  await page.getByRole('button', { name: 'dollar cash' }).click();
+  await page.getByRole('button', { name: 'Payment' }).click();
+  await page.getByRole('button', { name: 'cash' }).click();
   await page.getByRole('button', { name: 'Create order' }).click();
   await page.locator('.ant-segmented-item-icon > .ant-badge > .anticon > svg').click();
   await page.getByLabel('Select all').check();
   await page.getByRole('button', { name: 'check Discharge (1/1)' }).click();
   await page.getByRole('button', { name: 'OK', exact: true }).click();
   await expect(page.getByText('Order discharged')).toHaveText;
+  await expect(page.getByText('Collection Receipt', { exact: true })).toBeTruthy();
+  await expect(page.getByText('Return type Self collection at FIRST STORE')).toBeVisible();
 });

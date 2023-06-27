@@ -23,4 +23,15 @@ test('test', async ({ page }) => {
   await page.getByRole('button', { name: 'cash' }).click();
   await page.getByRole('button', { name: 'Create order' }).click();
   await expect(page.getByText('GST 2% ')).toBeVisible();
+  await expect(page.getByText('offer (₹ 2.00)')).toHaveText;
+  await expect(page.getByText('Customer name: test')).toBeTruthy();
+  await expect(page.getByText('Customer tel: +91 98765 53210')).toBeTruthy();
+  await expect(page.getByText('Customer name: test')).toBeTruthy();
+  await expect(page.getByText('- Deep Cleaning ₹ 150.00')).toBeTruthy();
+  await expect(page.getByText('Bag x 1 ₹ 150.00')).toBeTruthy();
+  await expect(page.getByText('- Deep Cleaning ₹ 150.00')).toBeTruthy();
+  await expect(page.getByText('- Brand: MULBERRY')).toBeTruthy();
+  await expect(page.getByText('- Serial No.: 7')).toBeTruthy();
+  await expect(page.getByText('- Colour: WHITE')).toBeTruthy();
+  await expect(page.getByText('Pay by Cash (₹ 150.95)')).toBeTruthy();
 });

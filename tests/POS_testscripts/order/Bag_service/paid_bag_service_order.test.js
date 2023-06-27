@@ -22,5 +22,14 @@ test('test', async ({ page }) => {
   await page.getByRole('button', { name: 'cash' }).click();
   await page.getByRole('button', { name: 'Create order' }).click();
   await expect(page.getByText('Order created')).toHaveText;
+  expect(page.getByRole('heading', { name: '(PAID)' })).toHaveText;
+  await expect(page.getByText('Customer name: test')).toHaveText;
+  await expect(page.getByText('Customer tel: +91 98765 53210')).toHaveText;
+  await expect(page.getByText('Bag x 1 ₹ 30.00')).toHaveText;
+  await expect(page.getByText('- Estimated completion: 14/07/2023 (Fr)')).toHaveText;
+  await expect(page.getByText('- Interior General Cleaning ₹ 30.00')).toHaveText;
+  await expect(page.getByText('- Brand: ACNE STUDIOS')).toHaveText;
+  await expect(page.getByText('- Serial No.: 7')).toHaveText;
+  await expect(page.getByText('- Colour: BLACK')).toHaveText;
   
 });

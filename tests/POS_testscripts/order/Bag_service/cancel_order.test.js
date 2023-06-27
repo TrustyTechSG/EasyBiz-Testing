@@ -17,8 +17,8 @@ test('test', async ({ page }) => {
   await page.getByRole('button', { name: 'Complete & Close' }).click();
   await page.getByPlaceholder('Search customer, order').click();
   await page.getByText('[1] test ').click();
-   await page.getByRole('button', { name: 'credit-card Payment' }).click();
-  await page.getByRole('button', { name: 'dollar cash' }).click();
+   await page.getByRole('button', { name: ' Payment' }).click();
+  await page.getByRole('button', { name: 'cash' }).click();
   await page.getByRole('button', { name: 'Create order' }).click();
   await page.getByRole('img', { name: 'hourglass' }).locator('svg').click();
   await page.getByRole('button', { name: 'close-circle Cancel order' }).click();
@@ -26,4 +26,8 @@ test('test', async ({ page }) => {
   await page.getByPlaceholder('Cancellation note').fill('cancel now');
   await page.getByRole('button', { name: 'Cancel order', exact: true }).click();
   await expect(page.getByText('Order has been cancelled')).toHaveText;
+  await page.getByRole('img', { name: 'file-text' }).locator('svg').click();
+  await expect(page.getByRole('heading', { name: 'VOID' })).toBeVisible();
+  await page.getByRole('img', { name: 'history' }).locator('svg').click();
+  await expect(page.getByText('Order cancelled | Note: cancel now | ₹ 153.00 refunded by Cash | Note: order can')).toBeVisible();
 });

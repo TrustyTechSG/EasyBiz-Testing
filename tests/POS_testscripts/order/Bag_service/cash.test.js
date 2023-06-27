@@ -31,5 +31,4 @@ test('test', async ({ page }) => {
   await expect(page.getByText('- Colour: BLACK')).toBeTruthy();
   await expect(page.getByText('Subtotal 1/pcs ₹ 30.00')).toBeTruthy();
   await expect(page.getByText('Pay by Cash (₹ 30.60)')).toBeTruthy();
-
 });

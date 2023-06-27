@@ -25,5 +25,6 @@ test('test', async ({ page }) => {
   await page.getByRole('button', { name: 'border #1' }).click();
   await page.getByPlaceholder('Redo note').click();
   await page.getByPlaceholder('Redo note').fill('redo note');
-//pending bug
+  await expect(page.getByText('* redo note')).toBeTruthy();
+//pending with bug
 });

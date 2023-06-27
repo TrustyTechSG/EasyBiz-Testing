@@ -18,4 +18,10 @@ test('test', async ({ page }) => {
   await page.getByPlaceholder('Search customer, order').click();
   await page.getByText('[1] test ').click();
   await expect(page.getByText('Deep Cleaning,Brand: MULBERRY,Serial No.:7,Colour: WHITE')).toHaveText;
+  await expect(page.getByText('Item total: ₹150.00')).toHaveValue;
+  await expect(page.getByText('#1 Bag₹150.00x1 ₹150.00')).toHaveText;
+  await expect(page.getByText('Deep Cleaning').nth(1)).toHaveText;
+  await expect(page.getByText('Brand: MULBERRY')).toHaveText;
+  await expect(page.getByText('Serial No.: 7')).toHaveText;
+  await expect(page.getByText('Colour: WHITE')).toHaveText;
 });

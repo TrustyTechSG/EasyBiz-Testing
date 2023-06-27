@@ -25,4 +25,9 @@ test('test', async ({ page }) => {
   await page.getByText('SECOND STORE').click();
   await page.getByRole('button', { name: 'Submit' }).click();await page.getByRole('button', { name: 'Submit' }).click();
   await expect(page.getByText('Collection place changed to SECOND STORE')).toHaveText;
+  await expect(page.getByText('Customer name: test')).toBeTruthy()
+  await expect(page.getByText('Customer tel: +91 98765 53210')).toBeTruthy()
+  await expect(page.getByText('Collect at SECOND STORE')).toHaveText;
+  await page.getByRole('img', { name: 'file-text' }).locator('path').click();
+  await expect(page.getByText('Return type: Self collection at SECOND STORE')).toHaveText;
 });
