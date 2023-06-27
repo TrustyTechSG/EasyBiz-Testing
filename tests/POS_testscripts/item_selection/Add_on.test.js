@@ -8,7 +8,7 @@ test('test', async ({ page }) => {
   await page.getByRole('button', { name: 'right Line item details' }).click();
   await page.getByRole('button', { name: 'ubnode Add-on' }).click();
   await page.getByRole('listitem').filter({ hasText: 'HANG STRAIGHT[H/S]' }).getByRole('button', { name: 'plus' }).click();
-  const locator = page.getByText('Add-on: HANG STRAIGHT');
+  const locator = page.getByRole('listitem').filter({ hasText: '#1 T-Shirt₹6.00x1 pcs₹6.00LaundryAdd-on: HANG STRAIGHT' });
   await expect(locator).toBeVisible();
-  // At receipt page
+
 });

@@ -9,6 +9,6 @@ await page.getByRole('heading', { name: 'Laundry' }).getByRole('button', { name:
 await page.getByRole('button', { name: '5', exact: true }).click();
 await page.getByRole('button', { name: '0', exact: true }).click();
 await page.getByRole('button', { name: 'Add', exact: true }).click();
-const locator = page.getByText('Carpet');
+const locator = page.getByText('#1 Carpet - per sqft₹3.00x50 sqft₹150.00Laundry');
 await expect(locator).toBeTruthy();
 });

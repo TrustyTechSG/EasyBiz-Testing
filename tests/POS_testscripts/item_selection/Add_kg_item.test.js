@@ -10,6 +10,5 @@ test('test', async ({ page }) => {
   await page.getByRole('button', { name: 'Next' }).click();
   await page.getByRole('button', { name: '8', exact: true }).click();
   await page.getByRole('button', { name: 'Add', exact: true }).click();
-  const locator = page.getByText('#1 Load Wash - Per Kg');
-  await expect(locator).toBeVisible();
+  await expect(page.getByRole('listitem').filter({ hasText: '#1 Load Wash - Per Kg₹7.00x1 kg₹7.00Duvets & Bulky Items8 pcs' })).toBeVisible();
 });

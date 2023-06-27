@@ -7,5 +7,4 @@ test('test', async ({ page }) => {
   await page.getByText('Baju kurung').click();
   await page.getByRole('heading', { name: 'Dry Clean ' }).getByRole('button', { name: 'plus' }).click();
   await expect(page.getByText('Baju kurung')).toBeTruthy();
-
 });

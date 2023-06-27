@@ -9,5 +9,6 @@ await page.getByRole('button', { name: '0', exact: true }).click();
 await page.getByRole('button', { name: '0', exact: true }).click();
 await page.getByRole('tooltip', { name: 'Quick search' }).getByRole('button', { name: '2' }).click();
 await page.getByRole('button', { name: '3', exact: true }).click();
-await expect(page.getByRole('button', { name: 'Order No'})).toBeTruthy();
+await page.getByRole('button', { name: 'Order No' }).click();
+await expect(page.getByText('#00023 (FIRST STORE)')).toBeTruthy();
 });

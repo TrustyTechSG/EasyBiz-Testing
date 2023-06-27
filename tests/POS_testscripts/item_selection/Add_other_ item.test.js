@@ -18,6 +18,6 @@ await page.getByText('[15]').click();
 await page.getByRole('button', { name: 'Payment' }).click();
 await page.getByRole('button', { name: 'Cash' }).click();
 await page.getByRole('button', { name: 'Create order' }).click();
-const locator = page.getByText('net₹11.00x1');
+const locator = page.getByText('net ₹ 11.00 x 1/pcs ₹ 11.00', '-Laundry');
 await expect(locator).toBeTruthy();
 });
