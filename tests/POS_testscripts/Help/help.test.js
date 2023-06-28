@@ -5,6 +5,6 @@ test('test', async ({ page }) => {
 await page.goto(response.url)
 await page.getByRole('button', { name: 'shop FIRST STORE' }).click();
 await page.getByRole('button', { name: 'question Help' }).click();
-await page.frameLocator('iframe[name="intercom-messenger-frame"]').getByRole('button', { name: 'Send us a message We will reply as soon as we can' }).click();
-await expect(page.frameLocator('iframe[name="intercom-messenger-frame"]').getByText('Leave your feedback or message to contact our support team here 👨🏻‍💻👩🏻‍💻')).toHaveText
-});
+await page.frameLocator('iframe[name="intercom-messenger-frame"]').getByRole('button', { name: 'Send us a message We typically reply within 2 hours' }).click();
+await expect(page.frameLocator('iframe[name="intercom-messenger-frame"]').getByText('Leave your feedback or message to contact our support team here 👨🏻‍💻👩🏻‍💻')).toHaveText;
+})
