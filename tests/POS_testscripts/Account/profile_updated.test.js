@@ -22,4 +22,6 @@ test('test', async ({ page }) => {
   await page.getByRole('button', { name: 'OK', exact: true }).click();
   await page.getByRole('button', { name: 'loading Save' }).click();
   await expect(page.getByText('Profile updated')).toBeTruthy();
+  await page.locator('[id="\\36 9"]').getByText('[69] New one +91 76767 67676').click();
+  await expect(page.getByText('[69] New one +91 76767 67676')).toBeVisible();
   });

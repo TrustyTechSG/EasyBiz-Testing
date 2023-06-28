@@ -6,4 +6,6 @@ await page.goto(response.url)
 await page.getByRole('button', { name: 'shop FIRST STORE' }).click();
 await page.getByRole('button', { name: 'logout Sign out store' }).click();
 await expect(page.getByText('Your are signing out POS from store FIRST STORE')).toHaveText;
+await expect(page.getByRole('heading', { name: 'Log in with a code' })).toHaveText;
+
 });
