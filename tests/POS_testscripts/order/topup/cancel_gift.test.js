@@ -8,5 +8,8 @@ test('test', async ({ page }) => {
   await page.getByPlaceholder('Search customer, order').fill('test');
   await page.getByText('test +91 98765 53210').click();
   await page.getByRole('button', { name: 'history Credit history' }).click();
-await expect(page.getByText('cancel (Cancel transaction on 21/06/2023 10:46 (gift))')).toHaveValue;
+  await expect(page.getByText('cancel (Cancel transaction on 21/06/2023 10:46 (gift))')).toHaveValue;
+  expect(page.getByText('Credit History (test)'))
+  expect(page.getByText('cancel (Cancel transaction on 21/06/2023 10:46 (gift))')).toBeTruthy();
+  expect(page.getByText('-₹3.00')).toBeTruthy();
 });

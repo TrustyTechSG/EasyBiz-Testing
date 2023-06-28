@@ -9,4 +9,7 @@ test('test', async ({ page }) => {
   await page.getByText('test +91 98765 53210').click();
   await page.getByRole('button', { name: 'history Credit history' }).click();
   await expect(page.getByText('cancel (Cancel transaction on 21/06/2023 10:46 (cancel top up))')).toHaveValue;
+  expect(page.getByText('Credit History (test)'))
+  expect(page.getByText('-₹4.00')).toBeTruthy();
+
 });

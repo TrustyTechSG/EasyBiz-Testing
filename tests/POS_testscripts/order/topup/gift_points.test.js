@@ -13,6 +13,7 @@ await page.getByRole('button', { name: 'delivery bag' }).click();
 await page.getByRole('button', { name: 'delivery bag' }).click();
 await page.getByRole('button', { name: 'Preview' }).click();
 await page.getByRole('button', { name: 'OK', exact: true }).click();
-await expect(page.getByText('FIRST STORE delivery bag 1 1 ')).toHaveText;
+expect(page.getByText('FIRST STORE delivery bag 1 1 ')).toHaveText;
+expect(page.getByText('Customer test | +91 98765 53210')).toHaveText;
 //FIRST STORE delivery bag item count points
 });
