@@ -11,12 +11,11 @@ test('test', async ({ page }) => {
   await page.getByRole('button', { name: 'Payment' }).click();
   await page.getByRole('button', { name: 'unpaid' }).click();
   await page.getByRole('button', { name: 'Create order' }).click();
- await page.locator('label:nth-child(6) > .ant-segmented-item-label').click();
- await page.getByRole('button', { name: 'redo Redo' }).click();
- await page.getByRole('button', { name: 'Create redo order' }).click();
- await page.getByRole('button', { name: 'border #1' }).click();
- await page.getByRole('button', { name: 'Create redo order' }).click();
- await page.getByRole('tab', { name: 'Internal receipt' }).click();
- await expect(page.getByRole('heading', { name: '(PAID)' })).toBeVisible();
-
+  await page.locator('label:nth-child(6) > .ant-segmented-item-label').click();
+  await page.getByRole('button', { name: 'redo Redo' }).click();
+  await page.getByRole('button', { name: 'Create redo order' }).click();
+  await page.getByRole('button', { name: 'border #1' }).click();
+  await page.getByRole('button', { name: 'Create redo order' }).click();
+  await page.getByRole('tab', { name: 'Internal receipt' }).click();
+  expect(page.getByRole('heading', { name: '(PAID)' })).toBeTruthy();
 });
