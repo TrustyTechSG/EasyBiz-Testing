@@ -20,6 +20,18 @@ test('test', async ({ page }) => {
   await page.getByRole('button', { name: 'Payment' }).click();
   await page.getByRole('button', { name: 'unpaid' }).click();
   await page.getByRole('button', { name: 'Create order' }).click();
-  const locator = page.getByText('Bag x 1 ₹ 30.00');
-  await expect(locator).toBeTruthy();  
-});
+  expect(page.getByText('Bag x 1 ₹ 30.00')).toBeTruthy();
+  expect(page.getByRole('heading', { name: '(PENDING)' })).toBeTruthy();  
+  expect(page.getByText('Customer name: test')).toBeTruthy();  
+  expect(page.getByText('Customer tel: +91 98765 53210')).toBeTruthy();  
+  expect(page.getByText('Bag x 1 ₹ 30.00')).toBeTruthy();  
+  expect(page.getByText('- Interior General Cleaning ₹ 30.00')).toBeTruthy();  
+  expect(page.getByText('- Brand: ADIDAS')).toBeTruthy();  
+  expect(page.getByText('- Serial No.: 7')).toBeTruthy();  
+  expect(page.getByText('- Colour: BLACK')).toBeTruthy();  
+  expect(page.getByText('Outstanding ₹ 30.60')).toBeTruthy(); 
+  await page.getByRole('img', { name: 'tag' }).locator('svg').click();
+  expect(page.getByText('test Bag [IC]')).toBeTruthy()
+  await page.getByRole('superscript').nth(1).click();
+  expect(page.getByText('#1 Bag₹30.00x1 ₹30.00Estimated complete by Sun, Jun 11, 2023Interior General Cleaning')).toBeTruthy();
+}); 

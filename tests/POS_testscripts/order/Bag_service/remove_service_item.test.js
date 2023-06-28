@@ -1,5 +1,5 @@
 import { test, expect } from '@playwright/test';
-//remove bag service item
+//remove bag service item 
 test('test', async ({ page }) => {
 const response = await (await fetch(`https://us-central1-easybus-clean-cloud.cloudfunctions.net/testing?realm=JewIJxIl06qRVrOnhBL9&code=store1&method=pos_sign_in`)).json();
 await page.goto(response.url);
@@ -16,4 +16,7 @@ await page.getByRole('button', { name: 'Next right' }).click();
 await page.getByText('15', { exact: true }).click();
 await page.getByRole('button', { name: 'delete Remove' }).click();
 await page.getByRole('button', { name: 'Remove', exact: true }).click();
-await expect(page.getByText('Bag #1 removed')).toHaveText;})
+await expect(page.getByText('Bag #1 removed')).toHaveText;
+await expect(page.getByText('(Total 0 unit)')).toHaveText;
+await expect(page.getByText('Line items preview (Total 0 unit)')).toHaveText;
+})

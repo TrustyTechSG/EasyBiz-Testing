@@ -22,5 +22,19 @@ test('test', async ({ page }) => {
   await page.getByRole('button', { name: 'Payment' }).click();
   await page.getByRole('button', { name: 'cash' }).click();
   await page.getByRole('button', { name: 'Create order' }).click();
-  await expect(page.getByText('delivery charge ₹ 45.00')).toHaveText;
+  expect(page.getByRole('heading', { name: '(PAID)' })).toBeTruthy;
+  expect(page.getByText('Customer name: test')).toBeTruthy;
+  expect(page.getByText('Customer tel: +91 98765 53210')).toBeTruthy;
+  expect(page.getByText('- Deep Cleaning ₹ 150.00')).toBeTruthy;
+  expect(page.getByText('Bag x 1 ₹ 150.00')).toBeTruthy;
+  expect(page.getByText('- Brand: MULBERRY')).toBeTruthy;
+  expect(page.getByText('- Serial No.: 7')).toBeTruthy;
+  expect(page.getByText('- Colour: WHITE')).toBeTruthy;
+  expect(page.getByText('sur_charge ₹ 12.00')).toBeTruthy;
+  expect(page.getByText('- Estimated completion: 15/06/2023 (Th)')).toBeTruthy;
+await page.getByRole('img', { name: 'tag' }).locator('svg').click(); //Label
+expect(page.getByText('#1 Store received')).toBeTruthy();
+expect(page.getByText('test Bag [DC]')).toBeTruthy();
+await page.getByRole('dialog').getByRole('img', { name: 'credit-card' }).locator('svg').click();
+expect(page.getByText('#1 Bag₹150.00x1 ₹150.00Estimated complete by Thu, Jun 15, 2023Deep Cleaning₹150.')).toBeTruthy();
 });
