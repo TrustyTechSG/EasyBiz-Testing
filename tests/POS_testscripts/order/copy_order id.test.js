@@ -18,5 +18,5 @@ test('test', async ({ page }) => {
   await page.getByPlaceholder('Search customer, order').click();
   await page.getByPlaceholder('Search customer, order').fill('');
   await expect(page.getByRole('heading', { name: 'Order history by searching ' })).toBeTruthy();
-  });
+});
   

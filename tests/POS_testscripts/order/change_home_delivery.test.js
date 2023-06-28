@@ -18,5 +18,12 @@ test('test', async ({ page }) => {
   await page.getByRole('button', { name: ' Payment' }).click();
   await page.getByRole('button', { name: 'Cash' }).click();
   await page.getByRole('button', { name: 'Create order' }).click();
-  await expect(page.getByText('Return type Home delivery')).toBeTruthy();
+  expect(page.getByText('Return type Home delivery')).toBeTruthy();
+  expect(page.getByRole('heading', { name: '(PAID)' })).toBeTruthy();
+  expect(page.getByText('Customer name: abc')).toBeTruthy();
+  expect(page.getByText('T-Shirt ₹ 6.00 x 1/pcs ₹ 6.00')).toBeTruthy();
+  expect(page.getByText('- L')).toBeTruthy();
+  expect(page.getByText('Subtotal 1/pcs ₹ 10.00')).toBeTruthy();
+  expect(page.getByText('Pay by Cash (₹ 10.20)')).toBeTruthy();
+
 });

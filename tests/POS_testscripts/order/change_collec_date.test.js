@@ -18,5 +18,13 @@ test('test', async ({ page }) => {
   await page.getByRole('button', { name: 'right' }).click();
   await page.getByText('24').click();
   await page.getByRole('button', { name: 'Submit' }).click();
-  await expect(page.getByText('Estimated collection ')).toBeTruthy();  
+  expect(page.getByText('Estimated collection ')).toBeTruthy();
+  expect(page.getByText('August 24, 2023')).toBeTruthy();
+  await page.getByRole('img', { name: 'file-text' }).locator('svg').click();
+  expect(page.getByText('Customer name: test')).toBeTruthy();
+  expect(page.getByText('Estimated: 24/08/2023 (Th) collection:')).toBeTruthy();
+  expect(page.getByText('Customer tel: +91 98765 53210')).toBeTruthy();
+  expect(page.getByText('Sweater ₹ 6.00 x 1/pcs ₹ 6.00')).toBeTruthy();
+  expect(page.getByText('- L')).toBeTruthy();
+  
 });

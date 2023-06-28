@@ -15,5 +15,4 @@ test('test', async ({ page }) => {
   await page.getByRole('button', { name: '1', exact: true }).click();
   await page.getByRole('button', { name: '1', exact: true }).click();
   await expect(page.getByText('₹0.80')).toBeVisible();
-
 });
