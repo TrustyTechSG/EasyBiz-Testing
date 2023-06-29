@@ -9,7 +9,7 @@ test('test', async ({ page }) => {
   await page.getByPlaceholder('1 (702) 123-4567').click();
   await page.getByPlaceholder('1 (702) 123-4567').fill('+91 76767-67676');
   await page.getByRole('button', { name: 'Add account' }).click();
-  await expect(page.getByText('New account created')).toBeTruthy();
+  await expect(page.getByText('New account created')).toBeVisible();
   await expect(page.getByText('New one +91 76767 67676')).toBeVisible();
   
 });
