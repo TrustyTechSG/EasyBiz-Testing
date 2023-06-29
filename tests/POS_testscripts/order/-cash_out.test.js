@@ -10,5 +10,5 @@ await page.getByRole('button', { name: 'Preview' }).click();
 await page.getByPlaceholder('Note').click();
 await page.getByPlaceholder('Note').fill('cash out');
 await page.getByRole('button', { name: 'Confirm cash out' }).click();
-await expect(page.getByText('Cash In/Out ()(₹2.00)')).toHaveValue;
+await expect(page.getByText('Cash In/Out ()(₹2.00)')).toBeTruthy();
 });
