@@ -17,4 +17,6 @@ await page.getByPlaceholder('Note', { exact: true }).click();
 await page.getByPlaceholder('Note', { exact: true }).fill('label note');
 await page.getByRole('button', { name: 'Update' }).click();
 await expect(page.getByText('Note updated')).toBeTruthy();
+await expect(page.getByText('* label note', { exact: true })).toBeTruthy();
+await expect(page.getByText('test Leather Jacket [Dry Clean] * label note')).toBeTruthy();
 });
