@@ -8,5 +8,5 @@ await page.getByPlaceholder('Search product').fill('shawl');
 await page.getByPlaceholder('Search product').press('Enter');
 await page.getByText('Shawl').click();
 await page.getByRole('heading', { name: 'Laundry' }).getByRole('button', { name: 'plus' }).click();
-await expect (page.getByText('Shawl')).toBeTruthy();
+await expect (page.getByText('#1 Shawl')).toBeVisible();
 });
