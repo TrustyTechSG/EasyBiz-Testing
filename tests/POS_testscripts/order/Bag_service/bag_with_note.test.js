@@ -26,18 +26,16 @@ test('test', async ({ page }) => {
   await page.getByRole('button', { name: 'Payment' }).click();
   await page.getByRole('button', { name: 'Cash' }).click();
   await page.getByRole('button', { name: 'Create order' }).click();
-  expect(page.getByText('Customer name: test')).toBeTruthy()
-  expect(page.getByText('Customer tel: +91 98765 53210')).toBeTruthy()
-  expect(page.getByText('- Estimated completion: 25/06/2023 (Su)')).toBeTruthy()
-  expect(page.getByText('- Coating ₹ 50.00')).toBeTruthy()
-  expect(page.getByText('** default colour')).toBeTruthy()
-  expect(page.getByText('- Brand: MULBERRY')).toBeTruthy()
-  expect(page.getByText('- Serial No.: 5')).toBeTruthy()
-  expect(page.getByText('- Colour: METALLIC SILVER')).toBeTruthy()
-  expect(page.getByText('Subtotal 1/pcs ₹ 50.00')).toBeTruthy()
-  expect(page.getByText('Total (inclusive of GST) ₹ 51.00')).toBeTruthy()
-  expect(page.getByText('Pay by Cash (₹ 51.00)')).toBeTruthy()
-  expect(page.getByText('Return type: Self collection at FIRST STORE')).toBeTruthy()
-  await page.getByRole('img', { name: 'tag' }).locator('svg').click();
-  expect(page.getByText('test Bag [COAT]')).toHaveText; //lab4el
+  expect(page.getByText('Customer name: test')).toBeVisible()
+  expect(page.getByText('Customer tel: +91 98765 53210')).toBeVisible()
+  expect(page.getByText('- Estimated completion: 25/06/2023 (Su)')).toBeVisible()
+  expect(page.getByText('- Coating ₹ 50.00')).toBeVisible()
+  expect(page.getByText('** default colour')).toBeVisible()
+  expect(page.getByText('- Brand: MULBERRY')).toBeVisible()
+  expect(page.getByText('- Serial No.: 5')).toBeVisible()
+  expect(page.getByText('- Colour: METALLIC SILVER')).toBeVisible()
+  expect(page.getByText('Subtotal 1/pcs ₹ 50.00')).toBeVisible()
+  expect(page.getByText('Total (inclusive of GST) ₹ 51.00')).toBeVisible()
+  expect(page.getByText('Pay by Cash (₹ 51.00)')).toBeVisible()
+  expect(page.getByText('Return type: Self collection at FIRST STORE')).toBeVisible()
 });

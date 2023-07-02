@@ -19,7 +19,10 @@ test('test', async ({ page }) => {
   await page.getByText('24').click();
   await page.getByRole('button', { name: 'Submit' }).click();
   expect(page.getByText('Estimated collection ')).toBeTruthy();
-  expect(page.getByText('August 24, 2023')).toBeTruthy();
+  var currentDate = new Date();
+  currentDate.setMonth(currentDate.getMonth() + 1);
+  var nextMonth = currentDate.toLocaleString('en-US', {month: 'long'})
+  expect(page.getByText('${nextMonth} 24, 2023')).toBeTruthy();
   await page.getByRole('img', { name: 'file-text' }).locator('svg').click();
   expect(page.getByText('Customer name: test')).toBeTruthy();
   expect(page.getByText('Estimated: 24/08/2023 (Th) collection:')).toBeTruthy();

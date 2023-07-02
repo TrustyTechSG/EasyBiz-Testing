@@ -19,5 +19,4 @@ await expect(page.getByText('** Hi2')).toHaveText;
 await page.getByRole('img', { name: 'tag' }).locator('svg').click();
 await expect(page.getByText('* Hi2', { exact: true })).toHaveText;
 await expect(page.getByText('test Sweater [L] * Hi2')).toHaveText;
-
 });

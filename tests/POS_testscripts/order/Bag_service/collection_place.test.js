@@ -23,11 +23,10 @@ test('test', async ({ page }) => {
   await page.getByRole('dialog').getByRole('img', { name: 'calendar' }).locator('svg').click();
   await page.getByRole('button', { name: 'calendar Reschedule' }).click();
   await page.getByText('SECOND STORE').click();
-  await page.getByRole('button', { name: 'Submit' }).click();await page.getByRole('button', { name: 'Submit' }).click();
-  await expect(page.getByText('Collection place changed to SECOND STORE')).toHaveText;
-  await expect(page.getByText('Customer name: test')).toBeTruthy()
-  await expect(page.getByText('Customer tel: +91 98765 53210')).toBeTruthy()
-  await expect(page.getByText('Collect at SECOND STORE')).toHaveText;
-  await page.getByRole('img', { name: 'file-text' }).locator('path').click();
-  await expect(page.getByText('Return type: Self collection at SECOND STORE')).toHaveText;
+  await page.getByRole('button', { name: 'Submit' }).click();
+  await expect(page.getByText('Collection place changed to SECOND STORE')).toBeVisible();
+  await page.getByRole('img', { name: 'file-text' }).locator('svg').click();
+  await expect(page.getByText('Customer name: test')).toBeVisible()
+  await expect(page.getByText('Customer tel: +91 98765 53210')).toBeVisible()
+  await expect(page.getByText('Return type: Self collection at SECOND STORE')).toBeVisible();
 });
