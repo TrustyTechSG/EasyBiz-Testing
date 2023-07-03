@@ -21,14 +21,13 @@ test('test', async ({ page }) => {
   await page.getByRole('button', { name: 'Payment' }).click();
   await page.getByRole('button', { name: 'cash' }).click();
   await page.getByRole('button', { name: 'Create order' }).click();
-  await expect(page.getByText('Order created')).toHaveText;
-  await expect(page.getByText('Customer name: test')).toBeTruthy()
-  await expect(page.getByText('Customer tel: +91 98765 53210')).toBeTruthy()
-  await expect(page.getByText('- Interior General Cleaning ₹ 30.00')).toBeTruthy();
-  await expect(page.getByText('Bag x 1 ₹ 30.00')).toBeTruthy();
-  await expect(page.getByText('- Brand: ACNE STUDIOS')).toBeTruthy();
-  await expect(page.getByText('- Serial No.: 7')).toBeTruthy();
-  await expect(page.getByText('- Colour: BLACK')).toBeTruthy();
-  await expect(page.getByText('Subtotal 1/pcs ₹ 30.00')).toBeTruthy();
-  await expect(page.getByText('Pay by Cash (₹ 30.60)')).toBeTruthy();
+  await expect(page.getByText('Customer name: test')).toBeAttached();
+  await expect(page.getByText('Customer tel: +91 98765 53210')).toBeAttached();
+  await expect(page.getByText('- Interior General Cleaning ₹ 30.00')).toBeAttached();
+  await expect(page.getByText('Bag x 1 ₹ 30.00')).toBeAttached();
+  await expect(page.getByText('- Brand: ACNE STUDIOS')).toBeAttached();
+  await expect(page.getByText('- Serial No.: 7')).toBeAttached();
+  await expect(page.getByText('- Colour: BLACK')).toBeVisible();
+  await expect(page.getByText('Subtotal 1/pcs ₹ 30.00')).toBeVisible();
+  await expect(page.getByText('Pay by Cash (₹ 30.60)')).toBeVisible();
 });

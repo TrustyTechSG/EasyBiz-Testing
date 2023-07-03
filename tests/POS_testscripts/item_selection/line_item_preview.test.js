@@ -10,5 +10,5 @@ test('test', async ({ page }) => {
   await page.getByRole('button', { name: 'tags Accessory' }).click();
   await page.getByRole('listitem').filter({ hasText: 'With Alteration' }).getByRole('button', { name: 'plus' }).click();
   await page.getByRole('button', { name: 'Hi3' }).click();
-  await expect(page.getByRole('listitem').filter({ hasText: '#1 T-Shirt Laundry Add-on: FOLD Accessory: With Alteration x 1* Hi3' })).toBeTruthy();
+  await expect(page.getByRole('listitem').filter({ hasText: '#1 T-Shirt Laundry Add-on: FOLD Accessory: With Alteration x 1* Hi3' })).toBeVisible();
 });

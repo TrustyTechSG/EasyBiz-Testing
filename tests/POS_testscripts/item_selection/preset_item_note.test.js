@@ -15,9 +15,9 @@ await page.getByText('[1] test +91 98765 53210').click();
 await page.getByRole('button', { name: 'Payment' }).click();
 await page.getByRole('button', { name: 'cash' }).click();
 await page.getByRole('button', { name: 'Create order' }).click();
-await expect(page.getByText('** Hi2')).toHaveText;
+await expect(page.getByText('** Hi2')).toBeAttached();
 await page.getByRole('img', { name: 'tag' }).locator('svg').click();
-await expect(page.getByText('* Hi2', { exact: true })).toHaveText;
-await expect(page.getByText('test Sweater [L] * Hi2')).toHaveText;
+await expect(page.getByText('* Hi2', { exact: true })).toBeAttached();
+await expect(page.getByText('test Sweater [L] * Hi2')).toBeAttached();
 
 });

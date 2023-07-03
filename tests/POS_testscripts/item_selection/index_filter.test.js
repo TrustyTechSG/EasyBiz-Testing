@@ -6,5 +6,5 @@ test('test', async ({ page }) => {
   await page.getByRole('button', { name: 'K', exact: true }).click();
   await page.getByText('Baju kurung').click();
   await page.getByRole('heading', { name: 'Dry Clean ' }).getByRole('button', { name: 'plus' }).click();
-  await expect(page.getByText('Baju kurung')).toBeTruthy();
+  await expect(page.getByText('#1 Baju kurung')).toBeVisible();
 });

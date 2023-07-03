@@ -11,11 +11,11 @@ test('test', async ({ page }) => {
   await page.getByRole('button', { name: 'Payment' }).click();
   await page.getByRole('button', { name: 'Cash' }).click();
   await page.getByRole('button', { name: 'Create order' }).click();
-  const locator = page.getByText('Sweater');
-  await expect(locator).toBeTruthy();
+  const locator = page.getByText('Sweater ₹ 6.00 x 1/pcs ₹ 6.00');
+  await expect(locator).toBeVisible();
   await expect(page.getByText('- L')).toHaveText;
-  await expect(page.getByText('Pay by Cash (₹ 10.20)')).toHaveText;
-  await expect(page.getByText('Customer name: Cba')).toHaveText;
-  await expect(page.getByText('Customer tel: +91 94444 44444')).toHaveText;
-  await expect(page.getByText('Sweater ₹ 6.00 x 1/pcs ₹ 6.00')).toHaveText;
+  await expect(page.getByText('Pay by Cash (₹ 10.20)')).toBeVisible();
+  await expect(page.getByText('Customer name: Cba')).toBeVisible();
+  await expect(page.getByText('Customer tel: +91 94444 44444')).toBeVisible();
+  await expect(page.getByText('Sweater ₹ 6.00 x 1/pcs ₹ 6.00')).toBeVisible();
 })

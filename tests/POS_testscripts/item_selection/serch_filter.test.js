@@ -6,5 +6,5 @@ await page.goto(response.url);
 await page.getByPlaceholder('Search product').click();
 await page.getByPlaceholder('Search product').fill('sha');
 await page.getByText('Shawl').click();
-await expect (page.getByText('Shawl')).toBeTruthy();
+await expect (page.getByText('Shawl')).toBeVisible();
 });

@@ -25,7 +25,7 @@ test('test', async ({ page }) => {
   await page.getByPlaceholder('Cancellation note').click();
   await page.getByPlaceholder('Cancellation note').fill('cancel now');
   await page.getByRole('button', { name: 'Cancel order', exact: true }).click();
-  await expect(page.getByText('Order has been cancelled')).toHaveText;
+  await expect(page.getByText('Order has been cancelled')).toBeAttached();
   await page.getByRole('img', { name: 'file-text' }).locator('svg').click();
   await expect(page.getByRole('heading', { name: 'VOID' })).toBeVisible();
   await page.getByRole('img', { name: 'history' }).locator('svg').click();

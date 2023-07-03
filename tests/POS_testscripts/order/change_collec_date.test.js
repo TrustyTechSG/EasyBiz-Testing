@@ -1,5 +1,5 @@
 import { test, expect } from '@playwright/test';
-//change collection date
+
 test('test', async ({ page }) => {
   const response = await (await fetch(`https://us-central1-easybus-clean-cloud.cloudfunctions.net/testing?realm=JewIJxIl06qRVrOnhBL9&code=store1&method=pos_sign_in`)).json();
   await page.goto(response.url);
@@ -16,15 +16,15 @@ test('test', async ({ page }) => {
   await page.getByRole('dialog').getByRole('img', { name: 'calendar' }).locator('svg').click();
   await page.getByRole('button', { name: 'calendar Reschedule' }).click();
   await page.getByRole('button', { name: 'right' }).click();
+  var currentDate = new Date();
+  currentDate.setMonth(currentDate.getMonth()+1);
+  var nextMonth = currentDate.toLocaleString('en-US',{month: 'long'});
   await page.getByText('24').click();
   await page.getByRole('button', { name: 'Submit' }).click();
-  expect(page.getByText('Estimated collection ')).toBeTruthy();
-  expect(page.getByText('August 24, 2023')).toBeTruthy();
   await page.getByRole('img', { name: 'file-text' }).locator('svg').click();
-  expect(page.getByText('Customer name: test')).toBeTruthy();
-  expect(page.getByText('Estimated: 24/08/2023 (Th) collection:')).toBeTruthy();
-  expect(page.getByText('Customer tel: +91 98765 53210')).toBeTruthy();
-  expect(page.getByText('Sweater ₹ 6.00 x 1/pcs ₹ 6.00')).toBeTruthy();
-  expect(page.getByText('- L')).toBeTruthy();
-  
+  await expect(page.getByText('Customer name test')).toBeVisible();
+  await expect(page.getByText(`Estimated collection: 24/${nextMonth < 10 ? '0' + nextMonth : nextMonth}/2023`)).toBeVisible();
+  await expect(page.getByText('Customer tel +91 98765 53210')).toBeAttached();
+  await expect(page.getByText('Sweater ₹ 6.00 x 1/pcs ₹ 6.00')).toBeVisible();
+  await expect(page.getByText('- L')).toBeVisible();
 });

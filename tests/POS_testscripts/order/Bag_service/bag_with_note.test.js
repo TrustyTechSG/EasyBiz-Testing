@@ -18,7 +18,11 @@ test('test', async ({ page }) => {
   await page.getByRole('button', { name: 'OK', exact: true }).click();
   await page.getByRole('button', { name: 'Next right' }).click();
   await page.getByRole('button', { name: 'right' }).click();
-  await page.getByTitle('').locator('div').nth(2).click();
+  var currentDate = new Date();
+  currentDate.setMonth(currentDate.getMonth()+1);
+  var nextMonth = currentDate.toLocaleString('en-US',{month: 'long'});
+  //await page.getByTitle('').locator('div').nth(2).click();
+  await page.getByText('24').click();
   await page.getByRole('button', { name: 'Complete & Close' }).click();
   await page.getByPlaceholder('Search customer, order').click();
   await page.getByPlaceholder('Search customer, order').fill('test');
@@ -26,18 +30,18 @@ test('test', async ({ page }) => {
   await page.getByRole('button', { name: 'Payment' }).click();
   await page.getByRole('button', { name: 'Cash' }).click();
   await page.getByRole('button', { name: 'Create order' }).click();
-  expect(page.getByText('Customer name: test')).toBeTruthy()
-  expect(page.getByText('Customer tel: +91 98765 53210')).toBeTruthy()
-  expect(page.getByText('- Estimated completion: 25/06/2023 (Su)')).toBeTruthy()
-  expect(page.getByText('- Coating ₹ 50.00')).toBeTruthy()
-  expect(page.getByText('** default colour')).toBeTruthy()
-  expect(page.getByText('- Brand: MULBERRY')).toBeTruthy()
-  expect(page.getByText('- Serial No.: 5')).toBeTruthy()
-  expect(page.getByText('- Colour: METALLIC SILVER')).toBeTruthy()
-  expect(page.getByText('Subtotal 1/pcs ₹ 50.00')).toBeTruthy()
-  expect(page.getByText('Total (inclusive of GST) ₹ 51.00')).toBeTruthy()
-  expect(page.getByText('Pay by Cash (₹ 51.00)')).toBeTruthy()
-  expect(page.getByText('Return type: Self collection at FIRST STORE')).toBeTruthy()
+  await expect(page.getByText('Customer name test')).toBeAttached()
+  await expect(page.getByText('Customer tel +91 98765 53210')).toBeAttached()
+  await expect(page.getByText(`Estimated collection: 24/${Number(nextMonth) < 10 ? '0' + nextMonth : nextMonth}/2023`)).toBeVisible();
+  await expect(page.getByText('- Coating ₹ 50.00')).toBeAttached()
+  await expect(page.getByText('** default colour')).toBeAttached()
+  await expect(page.getByText('- Brand: MULBERRY')).toBeAttached()
+  await expect(page.getByText('- Serial No.: 5')).toBeAttached()
+  await expect(page.getByText('- Colour: METALLIC SILVER')).toBeAttached()
+  await expect(page.getByText('Subtotal 1/pcs ₹ 50.00')).toBeAttached()
+  await expect(page.getByText('Total (inclusive of GST) ₹ 51.00')).toBeAttached()
+  await expect(page.getByText('Pay by Cash (₹ 51.00)')).toBeAttached()
+  await expect(page.getByText('Return type: Self collection at FIRST STORE')).toBeAttached()
   await page.getByRole('img', { name: 'tag' }).locator('svg').click();
-  expect(page.getByText('test Bag [COAT]')).toHaveText; //lab4el
+  await expect(page.getByText('test Bag [COAT]')).toBeVisible(); //label
 });
