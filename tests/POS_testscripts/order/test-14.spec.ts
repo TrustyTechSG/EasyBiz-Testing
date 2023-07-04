@@ -28,7 +28,7 @@ test('test', async ({ page }) => {
   await page.getByRole('button', { name: 'Create order' }).click();
 
   const currentDate = new Date();
-  const currentMonth = currentDate.getMonth() + 1; // Add 2 to current month to get next month
+  const currentMonth = currentDate.getMonth() + 1; 
   const currentYear = currentDate.getFullYear();
   const expectedCompletionDate = `25/${currentMonth.toString().padStart(2, '0')}/${currentYear}`;
 

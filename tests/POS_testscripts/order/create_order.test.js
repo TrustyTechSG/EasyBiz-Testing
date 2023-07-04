@@ -10,13 +10,13 @@ test('test', async ({ page }) => {
   await page.getByRole('button', { name: 'Payment' }).click();
   await page.getByRole('button', { name: 'cash' }).click();
   await page.getByRole('button', { name: 'Create order' }).click();
-  await expect(page.getByRole('heading', { name: '(PAID)' })).toBeAttached();
-  await expect(page.getByText('Customer name: test')).toBeAttached();
-  await expect(page.getByText('Customer tel: +91 98765 53210')).toBeAttached();
-  expect(page.getByText('Leather Jacket ₹ 60.00 x 1/pcs ₹ 60.00')).toBeAttached();
-  expect(page.getByText('Return type: Self collection at FIRST STORE')).toBeAttached();
-  expect(page.getByText('- Dry Clean')).toBeAttached();
-  expect(page.getByText('Subtotal 1/pcs ₹ 60.00')).toBeAttached();
-  expect(page.getByText('Pay by Cash (₹ 61.20)')).toBeAttached();
+  await page.getByRole('tab', { name: 'Customer receipt' }).click();
+  await expect(page.getByText('Customer name test')).toBeAttached();
+  await expect(page.getByText('Customer tel +91 98765 53210')).toBeAttached();
+  await expect(page.getByText('Leather Jacket ₹ 60.00 x 1/pcs ₹ 60.00')).toBeAttached();
+  await expect(page.getByText('Return type Self collection at FIRST STORE')).toBeAttached();
+  await expect(page.getByText('- Dry Clean')).toBeAttached();
+  await expect(page.getByText('Subtotal 1/pcs ₹ 60.00')).toBeAttached();
+  await expect(page.getByText('Pay by Cash (₹ 61.20)')).toBeAttached();
 
   });

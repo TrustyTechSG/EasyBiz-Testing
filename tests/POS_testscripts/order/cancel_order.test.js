@@ -12,17 +12,18 @@ test('test', async ({ page }) => {
   await page.getByRole('button', { name: 'Cash' }).click();
   await page.getByRole('button', { name: 'Create order' }).click();
   await page.getByRole('img', { name: 'hourglass' }).locator('svg').click();
- await page.getByRole('button', { name: 'close-circle Cancel order' }).click();
- await page.getByPlaceholder('Cancellation note').click();
- await page.getByPlaceholder('Cancellation note').fill('cancellation note');
- await page.getByRole('button', { name: 'Cancel order', exact: true }).click();
- expect(page.getByText('Order has been cancelled')).toBeTruthy();
- await page.getByRole('img', { name: 'file-text' }).locator('path').click();
- expect(page.getByRole('heading', { name: 'VOID' })).toBeTruthy();
-expect(page.getByText('Customer name: test')).toBeTruthy(); 
-expect(page.getByText('Customer tel: +91 98765 53210')).toBeTruthy(); 
-expect(page.getByText('Sweater ₹ 6.00 x 1/pcs ₹ 6.00')).toBeTruthy(); 
-expect(page.getByText('- Lmm')).toBeVisible(); 
-expect(page.getByText('Subtotal 2/pcs ₹ 10.00')).toBeVisible(); 
-
+  await page.getByRole('button', { name: 'close-circle Cancel order' }).click();
+  await page.getByPlaceholder('Cancellation note').click();
+  await page.getByPlaceholder('Cancellation note').fill('cancellation note');
+  await page.getByRole('button', { name: 'Cancel order', exact: true }).click();
+  await page.getByRole('img', { name: 'file-text' }).locator('path').click();
+  await expect(page.getByRole('heading', { name: 'VOID' })).toBeVisible();
+  await expect(page.getByText('Customer name test')).toBeVisible(); 
+  await expect(page.getByText('Customer tel +91 98765 53210')).toBeVisible();  
+  await expect(page.getByText('Sweater ₹ 6.00 x 1/pcs ₹ 6.00')).toBeVisible(); 
+  await expect(page.getByText('- L')).toBeVisible(); 
+  await expect(page.getByText('Subtotal 1/pcs ₹ 10.00')).toBeVisible();
+  await page.getByRole('dialog').getByRole('img', { name: 'credit-card' }).locator('svg').click();
+  await expect(page.getByText('Total OutstandingVoided')).toBeVisible();
+//outstanding-void
 });

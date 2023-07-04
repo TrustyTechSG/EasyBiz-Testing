@@ -16,17 +16,25 @@ test('test', async ({ page }) => {
   await page.getByRole('dialog').getByRole('img', { name: 'calendar' }).locator('svg').click();
   await page.getByRole('button', { name: 'calendar Reschedule' }).click();
   await page.getByRole('button', { name: 'right' }).click();
-  await page.getByText('15').click();
+
+  var currentDate = new Date();
+  currentDate.setMonth(currentDate.getMonth() + 1);
+  var nextMonth = currentDate.toLocaleString('en-US', { month: '2-digit' });
+  console.log(nextMonth);
+  await page.getByText('15', { exact: true }).click();
+
   await page.getByRole('button', { name: 'edit', exact: true }).click();
   await page.getByRole('tooltip', { name: ' percentage' }).getByRole('button', { name: '2' }).click();
   await page.getByRole('button', { name: 'Add' }).click();
   await page.getByRole('button', { name: 'Submit' }).click();
   await page.getByRole('img', { name: 'file-text' }).locator('path').click();
-  expect(page.getByText('Customer name: test')).toBeTruthy();
-  expect(page.getByText('Customer tel: +91 98765 53210')).toBeTruthy();
-  expect(page.getByText('Return type: Self collection at FIRST STORE')).toBeTruthy();
-  expect(page.getByText('Sweater ₹ 6.00 x 1/pcs ₹ 6.00')).toBeTruthy();
-  expect(page.getByText('- L')).toBeTruthy();
+  await expect(page.getByText('Customer name test')).toBeVisible();
+  await expect(page.getByText('Customer tel +91 98765 53210')).toBeVisible();
+  await expect(page.getByText('Return type Self collection at FIRST STORE')).toBeVisible();
+  await expect(page.getByText('Sweater ₹ 6.00 x 1/pcs ₹ 6.00')).toBeVisible();
+  await expect(page.getByText('- L', { exact: true })).toBeVisible();
+  await expect(page.getByText(`Estimated collection 15/${nextMonth}/2023`)).toBeVisible();
+
 
 
 });

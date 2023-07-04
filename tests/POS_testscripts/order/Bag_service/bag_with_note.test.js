@@ -20,9 +20,9 @@ test('test', async ({ page }) => {
   await page.getByRole('button', { name: 'right' }).click();
   var currentDate = new Date();
   currentDate.setMonth(currentDate.getMonth()+1);
-  var nextMonth = currentDate.toLocaleString('en-US',{month: 'long'});
-  //await page.getByTitle('').locator('div').nth(2).click();
+  var nextMonth = currentDate.toLocaleString('en-US',{month: 'numeric'});
   await page.getByText('24').click();
+  console.log(nextMonth);
   await page.getByRole('button', { name: 'Complete & Close' }).click();
   await page.getByPlaceholder('Search customer, order').click();
   await page.getByPlaceholder('Search customer, order').fill('test');
@@ -30,18 +30,18 @@ test('test', async ({ page }) => {
   await page.getByRole('button', { name: 'Payment' }).click();
   await page.getByRole('button', { name: 'Cash' }).click();
   await page.getByRole('button', { name: 'Create order' }).click();
-  await expect(page.getByText('Customer name test')).toBeAttached()
-  await expect(page.getByText('Customer tel +91 98765 53210')).toBeAttached()
-  await expect(page.getByText(`Estimated collection: 24/${Number(nextMonth) < 10 ? '0' + nextMonth : nextMonth}/2023`)).toBeVisible();
-  await expect(page.getByText('- Coating ₹ 50.00')).toBeAttached()
-  await expect(page.getByText('** default colour')).toBeAttached()
-  await expect(page.getByText('- Brand: MULBERRY')).toBeAttached()
-  await expect(page.getByText('- Serial No.: 5')).toBeAttached()
-  await expect(page.getByText('- Colour: METALLIC SILVER')).toBeAttached()
-  await expect(page.getByText('Subtotal 1/pcs ₹ 50.00')).toBeAttached()
-  await expect(page.getByText('Total (inclusive of GST) ₹ 51.00')).toBeAttached()
-  await expect(page.getByText('Pay by Cash (₹ 51.00)')).toBeAttached()
-  await expect(page.getByText('Return type: Self collection at FIRST STORE')).toBeAttached()
+  await expect(page.getByText('Customer name test')).toBeVisible();
+  await expect(page.getByText(`Estimated collection 24/0${nextMonth}/2023`)).toBeVisible();
+  await expect(page.getByText('Customer tel +91 98765 53210')).toBeVisible();
+  await expect(page.getByText('- Coating ₹ 50.00')).toBeVisible();
+  await expect(page.getByText('** default colour')).toBeVisible();
+  await expect(page.getByText('- Brand: MULBERRY')).toBeVisible();
+  await expect(page.getByText('- Serial No.: 5')).toBeVisible();
+  await expect(page.getByText('- Colour: METALLIC SILVER')).toBeVisible();
+  await expect(page.getByText('Subtotal 1/pcs ₹ 50.00')).toBeVisible();
+  await expect(page.getByText('Total (inclusive of GST) ₹ 51.00')).toBeVisible();
+  await expect(page.getByText('Pay by Cash (₹ 51.00)')).toBeVisible();
+  await expect(page.getByText('Return type: Self collection at FIRST STORE')).toBeVisible();
   await page.getByRole('img', { name: 'tag' }).locator('svg').click();
   await expect(page.getByText('test Bag [COAT]')).toBeVisible(); //label
 });

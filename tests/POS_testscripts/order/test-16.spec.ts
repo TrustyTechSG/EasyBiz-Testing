@@ -23,7 +23,6 @@ test('test', async ({ page }) => {
   const currentMonth = currentDate.getMonth() + 1;
   const currentYear = currentDate.getFullYear();
   const expectedCompletionDate = `${currentDate.getDate()}/${currentMonth.toString().padStart(2, '0')}/${currentYear}`;
-  await page.click(`- Estimated completion: ${expectedCompletionDate}`);
   await page.getByRole('button', { name: 'Complete & Close' }).click();
   await page.getByPlaceholder('Search customer, order').click();
   await page.getByPlaceholder('Search customer, order').fill('test');
