@@ -16,6 +16,7 @@ test('test', async ({ page }) => {
   await page.getByRole('dialog').getByRole('img', { name: 'calendar' }).locator('svg').click();
   await page.getByRole('button', { name: 'calendar Reschedule' }).click();
   await page.getByRole('button', { name: 'right' }).click();
+<<<<<<< HEAD:tests/POS_testscripts/order/change_collec_date.test.js
   //var currentDate = new Date();
   //currentDate.setMonth(currentDate.getMonth()+1);
   //var nextMonth = currentDate.toLocaleString('en-US',{month: 'numeric'});
@@ -34,6 +35,16 @@ test('test', async ({ page }) => {
   await page.getByRole('img', { name: 'file-text' }).locator('svg').click();
   await expect(page.getByText(`Estimated collection 24/${nextMonth}/2023`)).toBeVisible();
   await expect(page.getByText('Customer name test')).toBeVisible();
+=======
+  var currentDate = new Date();
+  currentDate.setMonth(currentDate.getMonth()+1);
+  var nextMonth = currentDate.toLocaleString('en-US',{month: 'long'});
+  await page.getByText('24').click();
+  await page.getByRole('button', { name: 'Submit' }).click();
+  await page.getByRole('img', { name: 'file-text' }).locator('svg').click();
+  await expect(page.getByText('Customer name test')).toBeVisible();
+  await expect(page.getByText(`Estimated collection: 24/${nextMonth < 10 ? '0' + nextMonth : nextMonth}/2023`)).toBeVisible();
+>>>>>>> 96a1e378ae53d11e86f478859fd1e06aea5ffb02:POS_testscripts/order/change_collec_date.test.js
   await expect(page.getByText('Customer tel +91 98765 53210')).toBeAttached();
   await expect(page.getByText('Sweater ₹ 6.00 x 1/pcs ₹ 6.00')).toBeVisible();
   await expect(page.getByText('- L')).toBeVisible();

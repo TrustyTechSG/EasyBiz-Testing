@@ -26,9 +26,14 @@ test('test', async ({ page }) => {
   await page.getByRole('button', { name: 'Payment' }).click();
   await page.getByRole('button', { name: 'cash' }).click();
   await page.getByRole('button', { name: 'Create order' }).click();
+<<<<<<< HEAD:tests/POS_testscripts/order/Bag_service/cash.test.js
   await expect(page.getByText('Customer name test')).toBeAttached();
   await expect(page.getByText('Customer tel +91 98765 53210')).toBeAttached();
   await expect(page.getByText(`Estimated collection; 15/0${nextMonth}/2023`)).toBeVisible();
+=======
+  await expect(page.getByText('Customer name: test')).toBeAttached();
+  await expect(page.getByText('Customer tel: +91 98765 53210')).toBeAttached();
+>>>>>>> 96a1e378ae53d11e86f478859fd1e06aea5ffb02:POS_testscripts/order/Bag_service/cash.test.js
   await expect(page.getByText('- Interior General Cleaning ₹ 30.00')).toBeAttached();
   await expect(page.getByText('Bag x 1 ₹ 30.00')).toBeAttached();
   await expect(page.getByText('- Brand: ACNE STUDIOS')).toBeAttached();

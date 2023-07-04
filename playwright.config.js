@@ -16,13 +16,12 @@ require('dotenv').config();
 const config = {
   testDir: './tests',
   /* Maximum time one test can run for. */
-  timeout: 60 * 1000,
-  expect: {
+    expect: {
     /**
      * Maximum time expect() should wait for the condition to be met.
      * For example in `await expect(locator).toHaveText();`
      */
-    timeout: 20000
+    
   },
   /* Run tests in files in parallel */
   fullyParallel: true,
