@@ -14,7 +14,20 @@ require('dotenv').config();
  * @type {import('@playwright/test').PlaywrightTestConfig}
  */
 const config = {
+<<<<<<< HEAD
     /* Run tests in files in parallel */
+=======
+  testDir: './tests',
+  /* Maximum time one test can run for. */
+    expect: {
+    /**
+     * Maximum time expect() should wait for the condition to be met.
+     * For example in `await expect(locator).toHaveText();`
+     */
+    
+  },
+  /* Run tests in files in parallel */
+>>>>>>> 2c8b8168137b0680e4adc44e8fb8ee49b31af149
   fullyParallel: true,
   /* Fail the build on CI if you accidentally left test.only in the source code. */
   forbidOnly: !!process.env.CI,
