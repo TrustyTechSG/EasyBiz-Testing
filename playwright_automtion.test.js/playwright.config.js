@@ -1,6 +1,5 @@
 // @ts-check
-const { devices } = require('@playwright/test');
-require('dotenv').config();
+const { defineConfig, devices } = require('@playwright/test');
 
 /**
  * Read environment variables from file.
@@ -8,13 +7,12 @@ require('dotenv').config();
  */
 // require('dotenv').config();
 
-
 /**
  * @see https://playwright.dev/docs/test-configuration
- * @type {import('@playwright/test').PlaywrightTestConfig}
  */
-const config = {
-    /* Run tests in files in parallel */
+module.exports = defineConfig({
+  testDir: './e2e',
+  /* Run tests in files in parallel */
   fullyParallel: true,
   /* Fail the build on CI if you accidentally left test.only in the source code. */
   forbidOnly: !!process.env.CI,
@@ -26,12 +24,8 @@ const config = {
   reporter: 'html',
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
-    screenshot: 'only-on-failure',
-    video: 'retain-on-failure',
-    /* Maximum time each action such as `click()` can take. Defaults to 0 (no limit). */
-    actionTimeout: 0,
     /* Base URL to use in actions like `await page.goto('/')`. */
-    // baseURL: 'http://localhost:3000',
+    // baseURL: 'http://127.0.0.1:3000',
 
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     trace: 'on-first-retry',
@@ -41,62 +35,45 @@ const config = {
   projects: [
     {
       name: 'chromium',
-      use: {
-        ...devices['Desktop Chrome'],
-      },
+      use: { ...devices['Desktop Chrome'] },
     },
 
-    // {
-    //   name: 'firefox',
-    //   use: {
-    //     ...devices['Desktop Firefox'],
-    //   },
-    // },
+    {
+      name: 'firefox',
+      use: { ...devices['Desktop Firefox'] },
+    },
 
-    // {
-    //   name: 'webkit',
-    //   use: {
-    //     ...devices['Desktop Safari'],
-    //   },
-    // },
+    {
+      name: 'webkit',
+      use: { ...devices['Desktop Safari'] },
+    },
 
     /* Test against mobile viewports. */
     // {
     //   name: 'Mobile Chrome',
-    //   use: {
-    //     ...devices['Pixel 5'],
-    //   },
+    //   use: { ...devices['Pixel 5'] },
     // },
     // {
     //   name: 'Mobile Safari',
-    //   use: {
-    //     ...devices['iPhone 12'],
-    //   },
+    //   use: { ...devices['iPhone 12'] },
     // },
 
     /* Test against branded browsers. */
     // {
     //   name: 'Microsoft Edge',
-    //   use: {
-    //     channel: 'msedge',
-    //   },
+    //   use: { ...devices['Desktop Edge'], channel: 'msedge' },
     // },
     // {
     //   name: 'Google Chrome',
-    //   use: {
-    //     channel: 'chrome',
-    //   },
+    //   use: { ..devices['Desktop Chrome'], channel: 'chrome' },
     // },
   ],
-
-  /* Folder for test artifacts such as screenshots, videos, traces, etc. */
-  // outputDir: 'test-results/',
 
   /* Run your local dev server before starting the tests */
   // webServer: {
   //   command: 'npm run start',
-  //   port: 3000,
+  //   url: 'http://127.0.0.1:3000',
+  //   reuseExistingServer: !process.env.CI,
   // },
-};
+});
 
-module.exports = config;
