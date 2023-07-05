@@ -10,5 +10,5 @@ await page.getByRole('button', { name: '1' }).click();
 await page.getByRole('button', { name: '0', exact: true }).click();
 await page.getByRole('button', { name: 'Preview' }).click();
 await page.getByRole('button', { name: 'Confirm cash in' }).click();
-await expect(page.getByText('Please leave a note')).toHaveText;
+await expect(page.getByText('Please leave a note')).toBeVisible();
 });

@@ -11,5 +11,5 @@ test('test', async ({ page }) => {
   await page.getByPlaceholder('Note').fill('cash out');
   await page.getByRole('button', { name: 'Confirm cash out' }).click();
   await page.getByRole('heading', { name: 'Cash In/Out' }).click();
-  await expect(page.locator('.ant-list-item-meta-description > span').first()).toBeAttached;
+  await expect(page.locator('.ant-list-item-meta-description > span').first()).toBeAttached();
 });

@@ -12,7 +12,6 @@ test('test', async ({ page }) => {
   await page.getByPlaceholder('Note').click();
   await page.getByPlaceholder('Note').fill('cash in note');
   await page.getByRole('button', { name: 'Confirm cash in' }).click();
-
   let previousValue; 
   const expectedInDrawerHeading = await page.getByText('Expected in Drawer₹');
   const initialValue = await expectedInDrawerHeading.innerText();
@@ -21,7 +20,6 @@ test('test', async ({ page }) => {
   if (!isNaN(initialNumericValue)) {
   previousValue = initialNumericValue;
 }
-
  const updatedValue = await expectedInDrawerHeading.innerText();
  const updatedNumericValue = parseFloat(updatedValue.replace(/[^0-9.]/g, '')); 
  console.log(updatedNumericValue);

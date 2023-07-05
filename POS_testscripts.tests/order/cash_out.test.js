@@ -11,7 +11,6 @@ test('test', async ({ page }) => {
   await page.getByPlaceholder('Note').click();
   await page.getByPlaceholder('Note').fill('cashout rs 2');
   await page.getByRole('button', { name: 'Confirm cash out' }).click();
-
   let previousValue; 
   const expectedInDrawerHeading = await page.getByText('Expected in Drawer₹');
   const initialValue = await expectedInDrawerHeading.innerText();
