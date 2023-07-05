@@ -6,5 +6,5 @@ test('test', async ({ page }) => {
   await page.getByRole('button', { name: 'shop FIRST STORE' }).click();
   await page.getByRole('button', { name: 'translation Language' }).click();
   await page.getByRole('button', { name: '简体中文' }).click();
-  await expect(page.getByText('低于最低价差额')).toHaveText;
+  await expect(page.getByText('低于最低价差额')).toBeVisible();
 });
