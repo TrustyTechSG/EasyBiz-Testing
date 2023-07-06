@@ -11,21 +11,21 @@ test('test', async ({ page }) => {
   await page.getByPlaceholder('Note').click();
   await page.getByPlaceholder('Note').fill('cashout rs 2');
   await page.getByRole('button', { name: 'Confirm cash out' }).click();
-  let previousValue; 
+  let previousValue;
   const expectedInDrawerHeading = await page.getByText('Expected in Drawer₹');
   const initialValue = await expectedInDrawerHeading.innerText();
-  const initialNumericValue = parseFloat(initialValue.replace(/[^0-9.]/g, '')); 
+  const initialNumericValue = parseFloat(initialValue.replace(/[^0-9.]/g, ''));
   console.log('total before cash out:'+initialValue);
   if (!isNaN(initialNumericValue)) {
   previousValue = initialNumericValue;
 }
 
  const updatedValue = await expectedInDrawerHeading.innerText();
- const updatedNumericValue = parseFloat(updatedValue.replace(/[^0-9.]/g, '')); 
+ const updatedNumericValue = parseFloat(updatedValue.replace(/[^0-9.]/g, ''));
  console.log(updatedNumericValue);
  const updatedValueMinus10 = updatedNumericValue - 10;
  console.log('after cash out: ' +updatedValueMinus10);
  const formattedValue = updatedValueMinus10.toLocaleString('en-US');
  console.log(formattedValue);
  await expect(page.getByText(`Expected in Drawer₹${formattedValue}`)).toBeVisible();
-});
+});//cashout
