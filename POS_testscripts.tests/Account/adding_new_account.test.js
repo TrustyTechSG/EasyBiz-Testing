@@ -1,5 +1,5 @@
 import { test, expect } from '@playwright/test';
-//adding new account
+//adding new account-- hello
 test('test', async ({ page }) => {
   const response = await (await fetch(`https://us-central1-easybus-clean-cloud.cloudfunctions.net/testing?realm=JewIJxIl06qRVrOnhBL9&code=store1&method=pos_sign_in`)).json();
   await page.goto(response.url);
@@ -11,5 +11,5 @@ test('test', async ({ page }) => {
   await page.getByRole('button', { name: 'Add account' }).click();
   await expect(page.getByText('New account created')).toBeVisible();
   await expect(page.getByText('New one +91 76767 67676')).toBeVisible();
-  
+
 });
