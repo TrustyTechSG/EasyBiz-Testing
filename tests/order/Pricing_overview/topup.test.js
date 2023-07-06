@@ -11,7 +11,7 @@ test('test', async ({ page }) => {
   await page.getByRole('button', { name: 'credit-card Top up payment' }).click();
   await page.getByRole('button', { name: 'cash' }).click();
   await page.getByRole('button', { name: 'Make payment' }).click();
-  expect(page.getByText('Top Up Receipt Customer: test Customer tel: +91 98765 53210 Top up amount: ₹ 4.0')).toBeTruthy();
-  expect(page.getByText('Gift amount: ₹ 3.00')).toHaveText;
-  expect(page.getByText('Paid by: Cash')).toHaveText;
+  await expect(page.getByText('Top Up Receipt Customer: test Customer tel: +91 98765 53210 Top up amount: ₹ 4.0')).toBeTruthy();
+  await expect(page.getByText('Gift amount: ₹ 3.00')).toBeVisible();
+  await expect(page.getByText('Paid by: Cash')).toBeVisible();
 });

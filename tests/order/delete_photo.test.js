@@ -17,4 +17,4 @@ test('test', async ({ page }) => {
   await page.locator('#rc-tabs-1-panel-photo img').click();
   await page.locator('div').filter({ hasText: /^Delete photo$/ }).locator('button').click();
   await page.getByText('Photo deleted').click();
-});
+  });

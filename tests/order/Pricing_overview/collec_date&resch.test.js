@@ -14,16 +14,23 @@ test('test', async ({ page }) => {
   await page.getByRole('button', { name: 'Create order' }).click();
   await page.getByRole('dialog').getByRole('img', { name: 'calendar' }).locator('svg').click();
   await page.getByRole('button', { name: 'calendar Reschedule' }).click();
-  await page.getByRole('button', { name: 'right' }).click();
+  await page.getByRole('button', { name: 'right', exact: true }).click();
+  var currentDate = new Date();
+  currentDate.setMonth(currentDate.getMonth() + 1);
+  var nextMonth = currentDate.toLocaleString('en-US', { month: '2-digit' });
+  console.log(nextMonth);
+
   await page.getByText('21').click();
   await page.getByRole('button', { name: 'Submit' }).click();
-  await expect(page.getByText('Estimated collection')).toBeTruthy();
-  expect(page.getByText('Collect at FIRST STORE')).toBeTruthy();
+  await expect(page.getByText('Estimated collection')).toBeVisible();
+  expect(page.getByText('Collect at FIRST STORE')).toBeVisible();
   await page.getByRole('img', { name: 'file-text' }).locator('svg').click();
-  expect(page.getByRole('heading', { name: '(PAID)' })).toBeTruthy();
-  expect(page.getByText('Customer name: test')).toBeTruthy();
-  expect(page.getByText('Customer tel: +91 98765 53210')).toBeTruthy();
-  expect(page.getByText('Leather Jacket ₹ 60.00 x 1/pcs ₹ 60.00')).toBeTruthy();
-  expect(page.getByText('- Dry Clean')).toBeTruthy();
-  expect(page.getByText('Pay by Cash (₹ 61.20)')).toBeTruthy();
+  expect(page.getByRole('heading', { name: '(PAID)' })).toBeVisible();
+  expect(page.getByText('Customer name: test')).toBeVisible();
+  expect(page.getByText('Customer tel: +91 98765 53210')).toBeVisible();
+  expect(page.getByText('Leather Jacket ₹ 60.00 x 1/pcs ₹ 60.00')).toBeVisible();
+  expect(page.getByText('- Dry Clean')).toBeVisible();
+  expect(page.getByText('Pay by Cash (₹ 61.20)')).toBeVisible();
+  await expect(page.getByText(`Estimated collection 21/${nextMonth}/2023`)).toBeVisible();
+
 });

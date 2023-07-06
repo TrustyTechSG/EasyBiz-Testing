@@ -18,6 +18,11 @@ await page.getByRole('button', { name: 'Add address' }).click();
 await expect(page.getByText('Address added')).toBeVisible();
 await expect(page.getByRole('button', { name: 'right Address: Thanjavur, Tamil Nadu 613006, India' })).toHaveText;
 await page.getByRole('button', { name: 'right', exact: true }).click();
+var currentDate = new Date();
+currentDate.setMonth(currentDate.getMonth() + 1);
+var nextMonth = currentDate.toLocaleString('en-US', { month: '2-digit' });
+console.log(nextMonth);
+
 await page.getByText('12', { exact: true }).click();
 await expect(page.getByText('Home delivery')).toBeVisible();
 await page.getByRole('button', { name: 'Payment' }).click();

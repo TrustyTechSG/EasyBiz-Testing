@@ -8,8 +8,8 @@ test('test', async ({ page }) => {
   await page.getByRole('dialog').getByRole('button', { name: '2' }).click();
   await page.getByRole('button', { name: 'Preview' }).click();
   await page.getByPlaceholder('Note').click();
-  await page.getByPlaceholder('Note').fill('cash out');
+  await page.getByPlaceholder('Note').fill('cashout rs- 2');
   await page.getByRole('button', { name: 'Confirm cash out' }).click();
   await page.getByRole('heading', { name: 'Cash In/Out' }).click();
-  await expect(page.locator('.ant-list-item-meta-description > span').first()).toBeAttached();
+  await expect(page.getByRole('heading', { name: 'cashout rs-2' }).first()).toBeAttached();
 });

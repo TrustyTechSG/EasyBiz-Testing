@@ -13,6 +13,11 @@ test('test', async ({ page }) => {
   await page.getByRole('button', { name: 'Next right' }).click();
   await page.getByRole('listitem').filter({ hasText: 'Deep Cleaning[DC]' }).getByRole('button', { name: 'plus' }).click();
   await page.getByRole('button', { name: 'Next right' }).click();
+  await page.getByRole('button', { name: 'right' }).click();
+  var currentDate = new Date();
+  currentDate.setMonth(currentDate.getMonth() + 1);
+  var nextMonth = currentDate.toLocaleString('en-US', { month: '2-digit' });
+  console.log(nextMonth);
   await page.getByText('15', { exact: true }).click();
   await page.getByRole('button', { name: 'Complete & Close' }).click();
   await page.getByPlaceholder('Search customer, order').click();
@@ -22,19 +27,22 @@ test('test', async ({ page }) => {
   await page.getByRole('button', { name: 'Payment' }).click();
   await page.getByRole('button', { name: 'cash' }).click();
   await page.getByRole('button', { name: 'Create order' }).click();
-  expect(page.getByRole('heading', { name: '(PAID)' })).toBeTruthy;
-  expect(page.getByText('Customer name: test')).toBeTruthy;
-  expect(page.getByText('Customer tel: +91 98765 53210')).toBeTruthy;
-  expect(page.getByText('- Deep Cleaning ₹ 150.00')).toBeTruthy;
-  expect(page.getByText('Bag x 1 ₹ 150.00')).toBeTruthy;
-  expect(page.getByText('- Brand: MULBERRY')).toBeTruthy;
-  expect(page.getByText('- Serial No.: 7')).toBeTruthy;
-  expect(page.getByText('- Colour: WHITE')).toBeTruthy;
-  expect(page.getByText('sur_charge ₹ 12.00')).toBeTruthy;
-  expect(page.getByText('- Estimated completion: 15/06/2023 (Th)')).toBeTruthy;
-await page.getByRole('img', { name: 'tag' }).locator('svg').click(); //Label
-expect(page.getByText('#1 Store received')).toBeTruthy();
-expect(page.getByText('test Bag [DC]')).toBeTruthy();
-await page.getByRole('dialog').getByRole('img', { name: 'credit-card' }).locator('svg').click();
-expect(page.getByText('#1 Bag₹150.00x1 ₹150.00Estimated complete by Thu, Jun 15, 2023Deep Cleaning₹150.')).toBeTruthy();
+  await page.getByRole('tab', { name: 'Internal receipt' }).click();
+  await page.getByRole('heading', { name: '(PAID)' }).click();
+  await page.getByRole('tab', { name: 'Customer receipt' }).click();
+  await expect(page.getByRole('heading', { name: '(PAID)' })).toBeVisible();
+  await expect(page.getByText('Customer name test')).toBeVisible();
+  await expect(page.getByText('Customer tel +91 98765 53210')).toBeVisible();
+  await expect(page.getByRole('tabpanel', { name: 'Customer receipt' }).getByText('- Deep Cleaning ₹ 150.00')).toBeVisible();
+  await expect(page.getByRole('tabpanel', { name: 'Customer receipt' }).getByText('Bag x 1 ₹ 150.00')).toBeVisible();
+  await expect(page.getByRole('tabpanel', { name: 'Customer receipt' }).getByText('- Brand: MULBERRY')).toBeVisible();
+  await expect(page.getByRole('tabpanel', { name: 'Customer receipt' }).getByText(`Estimated collection 15/${nextMonth}/2023`)).toBeVisible();
+  await expect(page.getByRole('tabpanel', { name: 'Customer receipt' }).getByText('- Serial No.: 7')).toBeVisible();
+  await expect(page.getByRole('tabpanel', { name: 'Customer receipt' }).getByText('- Colour: WHITE')).toBeVisible();
+  await expect(page.getByRole('tabpanel', { name: 'Customer receipt' }).getByText('sur_charge ₹ 12.00')).toBeVisible();
+  await expect(page.getByText(`Estimated collection 15/${nextMonth}/2023`)).toBeVisible();
+  await page.getByRole('img', { name: 'tag' }).locator('svg').click(); //Label
+  await expect(page.getByText('#1 Store received')).toBeVisible();
+  await expect(page.getByText('test Bag [DC]')).toBeVisible();
+
 });

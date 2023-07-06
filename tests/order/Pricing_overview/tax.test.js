@@ -12,9 +12,9 @@ await page.getByRole('heading', { name: 'Dry Clean ₹8.00 minus 0 pcs plus' }).
 await page.getByRole('button', { name: 'Payment' }).click();
 await page.getByRole('button', { name: 'cash' }).click();
 await page.getByRole('button', { name: 'Create order' }).click();
-expect(page.getByText('Customer name: test')).toBeTruthy();
-expect(page.getByText('Customer tel: +91 98765 53210')).toBeTruthy();
-expect(page.getByText('Sweater ₹ 8.00 x 1/pcs ₹ 8.00')).toBeTruthy();
-expect(page.getByText('- Dry Clean')).toBeTruthy();
-expect(page.getByText('Subtotal 1/pcs ₹ 10.00')).toBeTruthy();
+expect(page.getByText('Customer name: test')).toBeVisible();
+expect(page.getByText('Customer tel: +91 98765 53210')).toBeVisible();
+expect(page.getByText('Sweater ₹ 8.00 x 1/pcs ₹ 8.00')).toBeVisible();
+expect(page.getByText('- Dry Clean')).toBeVisible();
+expect(page.getByText('Subtotal 1/pcs ₹ 10.00')).toBeVisible();
 });

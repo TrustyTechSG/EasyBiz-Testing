@@ -15,25 +15,20 @@ test('test', async ({ page }) => {
   await page.getByRole('button', { name: 'Next right' }).click();
   await page.getByRole('button', { name: 'right' }).click();
   var currentDate = new Date();
-  currentDate.setMonth(currentDate.getMonth()+1);
-  var nextMonth = currentDate.toLocaleString('en-US',{month: 'numeric'});
-  await page.getByText('15').click();
+  currentDate.setMonth(currentDate.getMonth() + 1);
+  var nextMonth = currentDate.toLocaleString('en-US', { month: '2-digit' });
   console.log(nextMonth);
-  //await page.getByText('15').click();
+  await page.getByText('24', { exact: true }).click();
   await page.getByRole('button', { name: 'Complete & Close' }).click();
   await page.getByPlaceholder('Search customer, order').click();
   await page.getByText('[1] test').click();
   await page.getByRole('button', { name: 'Payment' }).click();
   await page.getByRole('button', { name: 'cash' }).click();
   await page.getByRole('button', { name: 'Create order' }).click();
-<<<<<<< HEAD:tests/POS_testscripts/order/Bag_service/cash.test.js
-  await expect(page.getByText('Customer name test')).toBeAttached();
+  await page.getByRole('tabpanel', { name: 'Customer receipt' }).press('ArrowDown');
+  await page.getByRole('tabpanel', { name: 'Customer receipt' }).press('ArrowDown');
+  await expect(page.getByText(`Estimated collection 24/${nextMonth}/2023`)).toBeVisible();
   await expect(page.getByText('Customer tel +91 98765 53210')).toBeAttached();
-  await expect(page.getByText(`Estimated collection; 15/0${nextMonth}/2023`)).toBeVisible();
-=======
-  await expect(page.getByText('Customer name: test')).toBeAttached();
-  await expect(page.getByText('Customer tel: +91 98765 53210')).toBeAttached();
->>>>>>> 96a1e378ae53d11e86f478859fd1e06aea5ffb02:POS_testscripts/order/Bag_service/cash.test.js
   await expect(page.getByText('- Interior General Cleaning ₹ 30.00')).toBeAttached();
   await expect(page.getByText('Bag x 1 ₹ 30.00')).toBeAttached();
   await expect(page.getByText('- Brand: ACNE STUDIOS')).toBeAttached();

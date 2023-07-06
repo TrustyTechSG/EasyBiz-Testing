@@ -1,5 +1,5 @@
 import { test, expect } from '@playwright/test';
-//update label notes 
+//update label notes
 test('test', async ({ page }) => {
 const response = await (await fetch(`https://us-central1-easybus-clean-cloud.cloudfunctions.net/testing?realm=JewIJxIl06qRVrOnhBL9&code=store1&method=pos_sign_in`)).json();
 await page.goto(response.url);
@@ -16,5 +16,5 @@ await page.getByRole('button', { name: 'edit Label Note' }).click();
 await page.getByPlaceholder('Note', { exact: true }).click();
 await page.getByPlaceholder('Note', { exact: true }).fill('label note');
 await page.getByRole('button', { name: 'Update' }).click();
-await expect(page.getByText('Note updated')).toBeTruthy();
+await expect(page.getByText('Note updated')).toBeVisible();
 });

@@ -22,12 +22,23 @@ test('test', async ({ page }) => {
   await page.getByRole('button', { name: 'Payment' }).click();
   await page.getByRole('button', { name: 'cash' }).click();
   await page.getByRole('button', { name: 'Create order' }).click();
+  const orderNumberElement = await page.getByRole('heading', { name: 'FIRST STORE-' });
+  const orderNumberText = await orderNumberElement.innerText();
+  const regex = /FIRST STORE-(\d+)/;
+  const match = regex.exec(orderNumberText);
+  const orderNumber = match ? match[1] : null;
+  console.log(orderNumber);
+
   await page.getByRole('img', { name: 'history' }).locator('svg').click();
   await page.getByRole('button', { name: 'barcode Order ID' }).click();
   await expect(page.getByText('Order ID copied to your clipboard')).toHaveText;
   await page.getByRole('button', { name: 'Close' }).click();
+  const copiedOrderID = await page.evaluate(async () => {
+    const clipboardText = await navigator.clipboard.readText();
+    return clipboardText.trim();
+    });
+  await page.getByRole('tab', { name: 'search' }).locator('span').first().click();
   await page.getByPlaceholder('Search customer, order').click();
-  await page.getByPlaceholder('Search customer, order').fill('x9lGN7aAAqkNRsC8hrPa');
-  await page.getByRole('tab', { name: 'search' }).locator('svg').click();
-  await expect(page.getByText('[1] test +91 98765 53210')).toHaveText();
+  await page.getByPlaceholder('Search customer, order').fill(copiedOrderID);
+  await expect(page.getByText(`#${orderNumber} [1] test +91 98765 53210`)).toBeVisible();
   });

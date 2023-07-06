@@ -16,12 +16,10 @@ test('test', async ({ page }) => {
   await page.getByRole('dialog').getByRole('img', { name: 'calendar' }).locator('svg').click();
   await page.getByRole('button', { name: 'calendar Reschedule' }).click();
   await page.getByRole('button', { name: 'right' }).click();
-  
   var currentDate = new Date();
   currentDate.setMonth(currentDate.getMonth() + 1);
   var nextMonth = currentDate.toLocaleString('en-US', { month: '2-digit' });
   console.log(nextMonth);
-
   await page.getByText('24').click();
   await page.getByRole('button', { name: 'Submit' }).click();
   await page.getByRole('img', { name: 'file-text' }).locator('svg').click();
