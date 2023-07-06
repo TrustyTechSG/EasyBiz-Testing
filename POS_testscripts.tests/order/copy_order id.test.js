@@ -24,13 +24,12 @@ test('test', async ({ page }) => {
   await page.getByRole('button', { name: 'Close' }).click();
   const copiedOrderID = await page.evaluate(async () => {
     const clipboardText = await navigator.clipboard.readText();
-    return clipboardText.trim(); 
+    return clipboardText.trim();
     });
-  
+
   await page.getByRole('tab', { name: 'search' }).locator('span').first().click();
   await page.getByPlaceholder('Search customer, order').click();
   await page.getByPlaceholder('Search customer, order').fill(copiedOrderID);
-  await expect(page.getByText(`#${orderNumber} [1] test +91 98765 53210`)).toBeAttached();
-  
+  await expect(page.getByText(`#${orderNumber} [1] test +91 98765 53210`)).toBeVisible();
+
   });
-  
