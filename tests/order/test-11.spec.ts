@@ -25,8 +25,8 @@ test('test', async ({ page }) => {
   await page.getByRole('button', { name: 'Payment' }).click();
   await page.getByRole('button', { name: 'Cash' }).click();
   await page.getByRole('button', { name: 'Create order' }).click();
-  await expect(page.getByText('Customer name: test')).toBeAttached()
-  await expect(page.getByText('Customer tel: +91 98765 53210')).toBeAttached()
+  await expect(page.getByText('Customer name test')).toBeVisible()
+  await expect(page.getByText('Customer tel +91 98765 53210')).toBeVisible()
   // Adjusted the date calculation here
   const currentDate = new Date();
   const currentMonth = currentDate.getMonth() + 1;
@@ -38,16 +38,16 @@ test('test', async ({ page }) => {
     month: '2-digit',
     year: 'numeric',
   });
-  await expect(page.getByText(`- Estimated completion: ${formattedNextMonthDate}`)).toBeAttached();
-  await expect(page.getByText('- Coating ₹ 50.00')).toBeAttached();
-  await expect(page.getByText('** default colour')).toBeAttached();
-  await expect(page.getByText('- Brand: MULBERRY')).toBeAttached();
-  await expect(page.getByText('- Serial No.: 5')).toBeAttached();
-  await expect(page.getByText('- Colour: METALLIC SILVER')).toBeAttached();
-  await expect(page.getByText('Subtotal 1/pcs ₹ 50.00')).toBeAttached();
-  await expect(page.getByText('Total (inclusive of GST) ₹ 51.00')).toBeAttached();
-  await expect(page.getByText('Pay by Cash (₹ 51.00)')).toBeAttached();
-  await expect(page.getByText('Return type: Self collection at FIRST STORE')).toBeAttached();
+  await expect(page.getByText(`- Estimated completion: ${formattedNextMonthDate}`)).toBeVisible();
+  await expect(page.getByText('- Coating ₹ 50.00')).toBeVisible();
+  await expect(page.getByText('** default colour')).toBeVisible();
+  await expect(page.getByText('- Brand: MULBERRY')).toBeVisible();
+  await expect(page.getByText('- Serial No.: 5')).toBeVisible();
+  await expect(page.getByText('- Colour: METALLIC SILVER')).toBeVisible();
+  await expect(page.getByText('Subtotal 1/pcs ₹ 50.00')).toBeVisible();
+  await expect(page.getByText('Total (inclusive of GST) ₹ 51.00')).toBeVisible();
+  await expect(page.getByText('Pay by Cash (₹ 51.00)')).toBeVisible();
+  await expect(page.getByText('Return type: Self collection at FIRST STORE')).toBeVisible();
   await page.getByRole('img', { name: 'tag' }).locator('svg').click();
-  await expect(page.getByText('test Bag [COAT]')).toBeAttached(); //label
+  await expect(page.getByText('test Bag [COAT]')).toBeVisible(); //label
 });

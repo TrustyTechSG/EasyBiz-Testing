@@ -36,5 +36,5 @@ await expect(page.getByText('Leather Jacket ₹ 60.00 x 1/pcs ₹ 60.00')).toBeV
 await expect(page.getByText('- Dry Clean')).toBeVisible();
 await expect(page.getByText('Subtotal 1/pcs ₹ 60.00')).toBeVisible();
 await expect(page.getByText('Pay by Cash (₹ 60.00)')).toBeVisible();
-await expect(page.getByText('Address: Thanjavur, Tamil Nadu 613006, India')).toBeVisible();
+await expect(page.getByText('Address Thanjavur, Tamil Nadu 613006, India')).toBeVisible();
 });
