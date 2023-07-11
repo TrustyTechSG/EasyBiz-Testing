@@ -12,22 +12,21 @@ test('test', async ({ page }) => {
   await page.getByPlaceholder('Note').fill('cash in note');
   await page.getByRole('button', { name: 'Confirm cash in' }).click();
   //await expect(page.getByRole('heading', { name: 'Expected in Drawer' })).toHaveValue;
-  let previousValue; 
+  let previousValue;
   const expectedInDrawerHeading = await page.getByText('Expected in Drawer₹');
   const initialValue = await expectedInDrawerHeading.innerText();
-  const initialNumericValue = parseFloat(initialValue.replace(/[^0-9.]/g, '')); 
+  const initialNumericValue = parseFloat(initialValue.replace(/[^0-9.]/g, ''));
   console.log(initialValue);
   if (!isNaN(initialNumericValue)) {
    previousValue = initialNumericValue;
 }
 const updatedValue = await expectedInDrawerHeading.innerText();
-const updatedNumericValue = parseFloat(updatedValue.replace(/[^0-9.]/g, '')); 
+const updatedNumericValue = parseFloat(updatedValue.replace(/[^0-9.]/g, ''));
 console.log(updatedNumericValue);
 const updatedValuePlus10 = updatedNumericValue + 10;
 console.log(updatedValuePlus10);
 const formattedValue = updatedValuePlus10.toLocaleString('en-US');
 console.log(formattedValue);
-//await expect(page waitForSelector.(`:text("Expected in Drawer ₹${updatedValuePlus10}")`)).toBeAttached();
 await expect(page.getByText(`Expected in Drawer₹${formattedValue}`)).toBeAttached();
-//getByText('Expected in Drawer₹7,561.35')
+
 });
