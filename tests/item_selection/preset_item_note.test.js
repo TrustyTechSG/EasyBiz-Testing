@@ -8,13 +8,14 @@ await page.getByRole('heading', { name: 'Laundry' }).getByRole('button', { name:
 await page.getByRole('button', { name: 'Line item details' }).click();
 await page.getByRole('button', { name: 'Hi2' }).click();
 const locator = page.getByText('* Hi2');
-await expect(locator).toBeTruthy();
+await expect(locator).toBeVisible();
 await page.getByPlaceholder('Search customer, order').click();
 await page.getByPlaceholder('Search customer, order').fill('test');
 await page.getByText('[1] test +91 98765 53210').click();
 await page.getByRole('button', { name: 'Payment' }).click();
 await page.getByRole('button', { name: 'cash' }).click();
 await page.getByRole('button', { name: 'Create order' }).click();
+await page.getByRole('tabpanel', { name: 'Customer receipt' }).press('ArrowDown');
 await expect(page.getByText('** Hi2')).toBeAttached();
 await page.getByRole('img', { name: 'tag' }).locator('svg').click();
 await expect(page.getByText('* Hi2', { exact: true })).toBeAttached();

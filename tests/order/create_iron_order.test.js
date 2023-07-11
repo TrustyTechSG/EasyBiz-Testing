@@ -7,7 +7,7 @@ test('test', async ({ page }) => {
   await page.getByPlaceholder('Search customer, order').fill('test');
   await page.getByText('[1] test').click();
   await page.getByText('T-Shirt').click();
-  await page.getByRole('heading', { name: 'Laundry ₹6.00 minus 0 pcs plus' }).getByRole('button', { name: 'plus' }).click();
+  await page.getByRole('heading', { name: 'Ironing' }).getByRole('button', { name: 'plus' }).click();
   await page.getByRole('button', { name: 'calendar' }).click();
   await page.getByText('Home delivery').click();
   await page.getByRole('button', { name: 'right', exact: true }).click();
@@ -27,8 +27,8 @@ test('test', async ({ page }) => {
   await expect(page.getByText(`Schedule 24/${nextMonth}/2023`)).toBeVisible();
   await expect(page.getByRole('heading', { name: '(PAID)' })).toBeVisible();
   await expect(page.getByText('Customer name test')).toBeVisible();
-  await expect(page.getByText('T-Shirt ₹ 6.00 x 1/pcs ₹ 6.00')).toBeVisible();
-  await expect(page.getByText('- L', { exact: true })).toBeVisible();
+  await expect(page.getByText('T-Shirt ₹ 5.00 x 1/pcs ₹ 5.00')).toBeVisible();
+  await expect(page.getByText('- IRON', { exact: true })).toBeVisible();
   await expect(page.getByText('Subtotal 1/pcs ₹ 10.00')).toBeVisible();
   await expect(page.getByText('Pay by Cash (₹ 10.20)')).toBeVisible();
 
