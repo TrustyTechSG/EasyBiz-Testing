@@ -11,5 +11,5 @@ test('test', async ({ page }) => {
   await page.getByRole('button', { name: 'Unpaid' }).click();
   await page.getByRole('button', { name: 'Create order' }).click();
   await page.getByRole('img', { name: 'camera' }).locator('svg').click();
-  await expect(page.getByRole('button', { name: 'upload Upload', exact: true }).filter({ hasText: 'Upload' })).toBeEnabled();
+  await expect(page.getByRole('button', { name: 'upload Upload' }).getByRole('button', { name: 'upload Upload', exact: true }).filter({ hasText: 'Upload' })).toBeVisible();
 });

@@ -15,5 +15,6 @@ test('test', async ({ page }) => {
   await page.getByRole('button', { name: 'Refund' }).click();
   await page.getByPlaceholder('Refund note').click();
   await page.getByPlaceholder('Refund note').fill('Refund notes are here');
+  await page.getByRole('dialog', { name: 'Payment Refund' }).getByRole('button', { name: 'Refund' }).click();
   await expect(page.getByText('Refunded')).toBeVisible();
-    });
+});

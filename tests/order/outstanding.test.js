@@ -15,6 +15,7 @@ await page.getByRole('tooltip', { name: 'Partial Payment' }).getByRole('button',
 await page.getByRole('tooltip', { name: 'Partial Payment' }).getByRole('button', { name: '0' }).click();
 await page.getByRole('button', { name: 'Update' }).click();
 await page.getByRole('button', { name: 'Create order' }).click();
+await page.getByRole('img', { name: 'file-text' }).locator('svg').click();
 await expect(page.getByText('Outstanding ₹ 2.45')).toBeVisible();
 await expect(page.getByText('Customer name test')).toBeVisible();
 await expect(page.getByText('Customer tel +91 98765 53210')).toBeVisible();

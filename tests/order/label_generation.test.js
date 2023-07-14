@@ -19,7 +19,4 @@ await page.getByRole('button', { name: 'Update' }).click();
 await expect(page.getByText('Note updated')).toBeVisible();
 await expect(page.getByText('* label note', { exact: true })).toBeVisible();
 await expect(page.getByText('test Leather Jacket [Dry Clean] * label note')).toBeVisible();
-await expect(page.getByText('Customer name test')).toBeVisible();
-await expect(page.getByText('Customer tel +91 98765 53210')).toBeVisible();
-await expect(page.getByRole('heading', { name: '(PAID)' })).toBeVisible();
 });

@@ -22,15 +22,14 @@ test('test', async ({ page }) => {
 
   await page.getByText('21').click();
   await page.getByRole('button', { name: 'Submit' }).click();
-  await expect(page.getByText('Estimated collection')).toBeVisible();
-  expect(page.getByText('Collect at FIRST STORE')).toBeVisible();
+  await expect(page.getByText('Collect at FIRST STORE')).toBeVisible();
   await page.getByRole('img', { name: 'file-text' }).locator('svg').click();
-  expect(page.getByRole('heading', { name: '(PAID)' })).toBeVisible();
-  expect(page.getByText('Customer name: test')).toBeVisible();
-  expect(page.getByText('Customer tel: +91 98765 53210')).toBeVisible();
-  expect(page.getByText('Leather Jacket ₹ 60.00 x 1/pcs ₹ 60.00')).toBeVisible();
-  expect(page.getByText('- Dry Clean')).toBeVisible();
-  expect(page.getByText('Pay by Cash (₹ 61.20)')).toBeVisible();
+  await expect(page.getByRole('heading', { name: '(PAID)' })).toBeVisible();
+  await expect(page.getByText('Customer name test')).toBeVisible();
+  await expect(page.getByText('Customer tel +91 98765 53210')).toBeVisible();
+  await expect(page.getByText('Leather Jacket ₹ 60.00 x 1/pcs ₹ 60.00')).toBeVisible();
+  await expect(page.getByText('- Dry Clean')).toBeVisible();
+  await expect(page.getByText('Pay by Cash (₹ 61.20)')).toBeVisible();
   await expect(page.getByText(`Estimated collection 21/${nextMonth}/2023`)).toBeVisible();
 
 });

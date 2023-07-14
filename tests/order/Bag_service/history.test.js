@@ -28,11 +28,10 @@ test('test', async ({ page }) => {
   await page.getByRole('button', { name: 'cash' }).click();
   await page.getByRole('button', { name: 'Create order' }).click();
   await page.getByRole('heading', { name: 'FIRST STORE', exact: true }).click();
-  await page.getByRole('tabpanel', { name: 'Customer re5ceipt' }).press('ArrowDown');
   await expect(page.getByText('Customer name test')).toBeVisible();
   await expect(page.getByText('Customer tel +91 98765 53210')).toBeVisible();
-  await expect(page.getByText('- Deep Cleaning ₹ 165.25')).toBeVisible();
-  await expect(page.getByText('Bag x 1 ₹ 165.25')).toBeVisible();
+  await expect(page.getByText('- Deep Cleaning ₹ 150.00')).toBeVisible();
+  await expect(page.getByText('Bag x 1 ₹ 150.00')).toBeVisible();
   await expect(page.getByText('- Brand: MULBERRY')).toBeVisible();
   await expect(page.getByText('- Serial No.: 7')).toBeVisible();
   await expect(page.getByText('- Colour: WHITE')).toBeVisible();

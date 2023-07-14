@@ -21,6 +21,5 @@ test('test', async ({ page }) => {
   await page.getByRole('button', { name: 'Create order ' }).click();
   await page.getByRole('button', { name: 'copy' }).click();
   await page.getByRole('button', { name: 'OK', exact: true }).click();
-  const locator = page.getByRole('list');
-  await expect(locator).toBeVisible();
+  await expect(page.getByRole('list').locator('div').filter({ hasText: '#1 Bag₹150.00x1 ₹150.00Deep Cleaning₹150.00Brand: ADIDASSerial No.: 8Colour: SIL' }).first()).toBeVisible();
 });

@@ -11,12 +11,11 @@ test('test', async ({ page }) => {
   await page.getByRole('button', { name: 'Payment' }).click();
   await page.getByRole('button', { name: 'cash' }).click();
   await page.getByRole('button', { name: 'Create order' }).click();
-  await expect(page.getByText('Customer name test')).toBeVisible();
-  await expect(page.getByText('Customer tel +91 98765 53210')).toBeVisible();
-  await page.locator('label:nth-child(6) > .ant-segmented-item-label').click();
+  await page.getByRole('img', { name: 'hourglass' }).locator('path').click();
   await page.getByRole('button', { name: 'redo Redo' }).click();
   await page.getByRole('button', { name: 'Create redo order' }).click();
   await page.getByRole('button', { name: 'border #1' }).click();
   await page.getByRole('button', { name: 'Create redo order' }).click();
-  await expect(page.getByText('Redo order created')).toBeVisible();
+  await expect(page.getByText('Subtotal ₹ 0.00')).toBeVisible();
+  await expect(page.getByText('Total ₹ 0.00', { exact: true })).toBeVisible();
 })

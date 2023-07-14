@@ -27,7 +27,7 @@ test('test', async ({ page }) => {
   await page.getByRole('button', { name: 'Payment' }).click();
   await page.getByRole('button', { name: 'cash' }).click();
   await page.getByRole('button', { name: 'Create order' }).click();
-  await expect(page.getByText('offer (₹ 2.00)')).toHaveText;
+  await expect(page.getByText('offer (₹ 2.00)')).toBeVisible();
   await expect(page.getByText('Customer name test')).toBeVisible();
   await expect(page.getByText('Customer tel +91 98765 53210')).toBeVisible();
   await expect(page.getByText('Customer name test')).toBeVisible();

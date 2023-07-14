@@ -38,7 +38,7 @@ await expect(page.getByRole('heading', { name: '(PAID)' })).toBeVisible();
 await expect(page.getByText('Customer name test')).toBeVisible();
 await expect(page.getByText('Customer tel +91 98765 53210')).toBeVisible();
 await expect(page.getByText('Return type Home delivery')).toBeVisible();
-await expect(page.getByText('Mattress Protector ₹ 18.00 x 1 ₹ 18.00')).toBeVisible();
+await expect(page.getByText('Mattress Protector ₹ 18.00 x 1/pcs ₹ 18.00')).toBeVisible();
 await expect(page.getByText('- Laundry')).toBeVisible();
 await expect(page.getByText('Pay by Cash (₹ 18.00)')).toBeVisible();
 });

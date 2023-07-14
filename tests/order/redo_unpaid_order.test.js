@@ -16,5 +16,7 @@ test('test', async ({ page }) => {
   await page.getByRole('button', { name: 'Create redo order' }).click();
   await page.getByRole('button', { name: 'border #1' }).click();
   await page.getByRole('button', { name: 'Create redo order' }).click();
-  await expect(page.getByText('Redo order created')).toBeVisible();
+  await expect(page.getByText('Subtotal ₹ 0.00')).toBeVisible();
+  await expect(page.getByText('Total ₹ 0.00', { exact: true })).toBeVisible();
+
 })
